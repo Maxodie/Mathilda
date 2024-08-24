@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="vector">
+      <UniqueIdentifier>{98AF7B22-8451-A6F8-6D0C-BA4C594D2D49}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\ILDA_constants.h" />
+    <ClInclude Include="src\ILDA_core.h" />
+    <ClInclude Include="src\ILDA_vector.h" />
+    <ClInclude Include="src\vector\ILDA_vector_double.h">
+      <Filter>vector</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\ILDA_main_test.c" />
+    <ClCompile Include="src\vector\ILDA_vector_double_source.c">
+      <Filter>vector</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

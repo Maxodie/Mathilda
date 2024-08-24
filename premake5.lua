@@ -15,7 +15,7 @@ project "Mathilda"
 	location "Mathilda"
 	kind "ConsoleApp"
 	language "C"
-	cdialect "C17"
+	cdialect "C99"
 	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
@@ -30,4 +30,9 @@ project "Mathilda"
 	includedirs
 	{
 		"%{prj.name}/src"
+	}
+
+	defines 
+	{
+		"HAVE_INLINE"
 	}
