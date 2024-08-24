@@ -23,7 +23,7 @@ This is also a learning project by French computer science students.
 
 ### Naming Convention
 
-- folder must be in named with "ILDA" at the start
+- files must be in named with "ILDA" at the start
 
 
 ### Licence
