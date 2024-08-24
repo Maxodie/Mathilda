@@ -3,5 +3,5 @@
 .vs/
 
 #binaries
-.bin/
-.bin-int/
+/bin
+/bin-int
