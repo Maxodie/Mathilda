@@ -1,0 +1,7 @@
+
+#visual studio temporary files
+.vs/
+
+#binaries
+.bin/
+.bin-int/
