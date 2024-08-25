@@ -118,15 +118,19 @@
   <ItemGroup>
     <ClInclude Include="src\ILDA_constants.h" />
     <ClInclude Include="src\ILDA_core.h" />
+    <ClInclude Include="src\ILDA_type_off.h" />
+    <ClInclude Include="src\ILDA_type_on.h" />
     <ClInclude Include="src\ILDA_vector.h" />
     <ClInclude Include="src\vector\ILDA_vector_double.h" />
+    <ClInclude Include="src\vector\ILDA_vector_float.h" />
+    <ClInclude Include="src\vector\ILDA_vector_int.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\ILDA_main_test.c" />
-    <ClCompile Include="src\vector\ILDA_vector_double_source.c" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="cpp.hint" />
+    <ClCompile Include="src\vector\ILDA_vector_generated.c" />
+    <ClCompile Include="src\vector\ILDA_vector_source.c">
+      <ExcludedFromBuild>true</ExcludedFromBuild>
+    </ClCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

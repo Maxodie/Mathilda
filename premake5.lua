@@ -36,3 +36,6 @@ project "Mathilda"
 	{
 		"HAVE_INLINE"
 	}
+
+	filter { "files:**source.c" }
+		flags {"ExcludeFromBuild"}

@@ -4,7 +4,8 @@
 #include "ILDA_core.h"
 
 //weird nerd vector stuff
-
 #include "vector/ILDA_vector_double.h"
+#include "vector/ILDA_vector_int.h"
+#include "vector/ILDA_vector_float.h"
 
 #endif

@@ -10,9 +10,13 @@ typedef int Int32;
 typedef float Float32;
 
 #ifdef HAVE_INLINE
-	#define INLINE_DECL static inline /* use C99 inline */
-	#define INLINE_FUN static inline  
+	#define INLINE_DECL static inline
+	#define INLINE_FUN extern inline  
+#else
+	#define INLINE_DECL
+	#define INLINE_FUN
 #endif
+
 
 
 #endif
