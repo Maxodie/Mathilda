@@ -1,22 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="vector">
-      <UniqueIdentifier>{98AF7B22-8451-A6F8-6D0C-BA4C594D2D49}</UniqueIdentifier>
+    <Filter Include="includes">
+      <UniqueIdentifier>{1CA10C65-086E-6770-3187-55181DB39CFE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\matrix">
+      <UniqueIdentifier>{51029D6A-3DBA-DEB7-A6C1-B713929879A8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\vector">
+      <UniqueIdentifier>{CF88DA7F-BB40-1CCD-2448-F528101FB7BD}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\ILDA_constants.h" />
-    <ClInclude Include="src\ILDA_core.h" />
-    <ClInclude Include="src\ILDA_vector.h" />
+    <ClInclude Include="includes\ILDA_matrix.h">
+      <Filter>includes</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\ILDA_vector.h">
+      <Filter>includes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ILDA_constants.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ILDA_core.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ILDA_type_off.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ILDA_type_on.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\matrix\ILDA_matrix_double.h">
+      <Filter>src\matrix</Filter>
+    </ClInclude>
     <ClInclude Include="src\vector\ILDA_vector_double.h">
-      <Filter>vector</Filter>
+      <Filter>src\vector</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vector\ILDA_vector_float.h">
+      <Filter>src\vector</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vector\ILDA_vector_int.h">
+      <Filter>src\vector</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\ILDA_main_test.c" />
-    <ClCompile Include="src\vector\ILDA_vector_double_source.c">
-      <Filter>vector</Filter>
+    <ClCompile Include="src\ILDA_main_test.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\matrix\ILDA_matrix_link.c">
+      <Filter>src\matrix</Filter>
+    </ClCompile>
+    <ClCompile Include="src\matrix\ILDA_matrix_source.c">
+      <Filter>src\matrix</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vector\ILDA_vector_link.c">
+      <Filter>src\vector</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vector\ILDA_vector_source.c">
+      <Filter>src\vector</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -11,28 +11,4 @@ workspace "Mathilda"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
-project "Mathilda"
-	location "Mathilda"
-	kind "ConsoleApp"
-	language "C"
-	cdialect "C99"
-	staticruntime "on"
-
-	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
-
-	files
-	{
-		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.c"
-	}
-
-	includedirs
-	{
-		"%{prj.name}/src"
-	}
-
-	defines 
-	{
-		"HAVE_INLINE"
-	}
+include "include_premake5.lua"
