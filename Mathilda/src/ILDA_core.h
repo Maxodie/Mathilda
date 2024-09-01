@@ -23,7 +23,11 @@ typedef char ILDA_bool;
 	#define INLINE_FUN
 #endif
 
-#define ILDA_ERROR(msg, ...) \
+#define ILDA_ERROR(msg) \
+	printf("\nILDA ERROR : ");\
+	__debugbreak();
+
+#define ILDA_ERROR_MSG(msg, ...) \
 	printf("\nILDA ERROR : ");\
 	printf(msg, __VA_ARGS__);\
 	__debugbreak();
