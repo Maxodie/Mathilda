@@ -2,31 +2,37 @@
 #include <stdlib.h>
 
 #include "ILDA_vector.h"
+#include "ILDA_matrix.h"
+
+void tempMatrixPrint(const ILDA_matrix* matrix);
 
 int main(void)
 {
-	printf("Hello Mathilda !");
+	printf("Hello Mathilda !");/////////////////////////////
 
-	ILDA_vector2 vector2Test = { .x = 1.0, .y = 2.0 };
-	ILDA_vector2 vector22 = {.x = 10.0, .y = 20.0};
+	ILDA_matrix matrix3x2;
+	ILDA_bool result = ILDA_matrix_init_alloc(3, 2, &matrix3x2);
+	printf("\n--- result init alloc %d ---\n", result);
 
-	printf("first vector2 double x : %f, y : %f", vector2Test.x, vector2Test.y);
+	printf("\n matrix 2x2 BEFORE : \n");
+	tempMatrixPrint(&matrix3x2);
+	printf("\n");
 
-	ILDA_vector2_add(&vector2Test, &vector22);
+	//ILDA_matrix_add(3, 2, &matrix3x2, &matrix3x2);
 
-	printf("\nsecond vector2 double x : %f, y : %f", vector2Test.x, vector2Test.y);
+	printf("\n matrix 2x2 AFTER : \n");
+	tempMatrixPrint(&matrix3x2);
+	printf("\n");
+}
 
-
-
-	printf("\n\ntest but with float nerd guys");
-
-
-	ILDA_vector2_float vector2Testk = { .x = 1.0f, .y = 2.0f };
-	ILDA_vector2_float vector22k = { .x = 10.0f, .y = 20.0f };
-
-	printf("\nfirst vector2 double x : %f, y : %f", vector2Testk.x, vector2Testk.y);
-
-	ILDA_vector2_float_add(&vector2Testk, &vector22k);
-
-	printf("\nsecond vector2 double x : %f, y : %f\n", vector2Testk.x, vector2Testk.y);
+void tempMatrixPrint(const ILDA_matrix* matrix)
+{
+	int index;
+	int jdex;
+	for (index = 0; index < matrix->rowCount; index++) {
+		for (jdex = 0; jdex < matrix->colCount; jdex++) {
+			printf("%f ", matrix->data[0][0]);
+		}
+		printf("\n");
+	}
 }

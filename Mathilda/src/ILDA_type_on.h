@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 #ifdef __ILDA_TYPE__
-	static_assert(false, "ILDA TYPE on is called but it was already on");
+	ILDA_STATIC_ASSERT(false, "ILDA TYPE on is called but it was already on");
 #endif
 
 #define __ILDA_TYPE__
@@ -20,16 +20,16 @@
 #ifdef ILDA_BASE_INT
 	#define ILDA_TYPE(dir) CONCAT2(dir,INT_NAME)
 	#define ILDA_FUNCTION(dir, name) CONCAT3(dir,INT_NAME,name)
-	#define ILDA_BASE_TYPE Int32
+	#define ILDA_BASE_TYPE int
 
 #elif  defined(ILDA_BASE_FLOAT)
 	#define ILDA_TYPE(dir) CONCAT2(dir,FLOAT_NAME)
 	#define ILDA_FUNCTION(dir, name) CONCAT3(dir,FLOAT_NAME,name)
-	#define ILDA_BASE_TYPE Float32
+	#define ILDA_BASE_TYPE float
 
 #else
 	#define ILDA_TYPE(dir) dir
 	#define ILDA_FUNCTION(dir, name) CONCAT2(dir,name)
-	#define ILDA_BASE_TYPE Double64
+	#define ILDA_BASE_TYPE double
 #endif // ILDA_BASE_INT
 
