@@ -1,4 +1,3 @@
-require "export-compile-commands"
 
 if outputdir == nil then
 	outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"

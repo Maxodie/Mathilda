@@ -22,7 +22,7 @@ ILDA_bool ILDA_FUNCTION(ILDA_matrix4x4, init_default)(ILDA_matrix4x4* matrix)
 {
 		matrix->colCount = 4;
 		matrix->rowCount = 4;
-		
+
 	return ILDA_SUCCESS;
 }
 
@@ -87,25 +87,18 @@ ILDA_bool ILDA_FUNCTION(ILDA_matrix4x4, mul_same)(ILDA_matrix4x4* multiplicand, 
 	return ILDA_SUCCESS;
 }
 
-ILDA_bool ILDA_FUNCTION(ILDA_matrix4x4, transform_)(ILDA_matrix4x4* multiplicand, const ILDA_vector4* multiplier)
+ILDA_vector4 ILDA_FUNCTION(ILDA_matrix4x4, mul_vector)(const ILDA_matrix4x4* multiplicand, const ILDA_vector4* multiplier)
 {
-	double vecData[4] = {multiplier->x, multiplier->y, multiplier->z, multiplier->w};
-
+	double vector4Saved[4] = { multiplier->x, multiplier->y, multiplier->z, multiplier->w };
+	double vector4[4] = {0};
 	size_t i, j, k;
-	double saveMul[4][4];
-	memcpy(saveMul, multiplicand->data, sizeof(saveMul));
 	for (i = 0; i < multiplicand->rowCount; i++)
 	{
-		for (j = 0; j < multiplicand->colCount; j++)
+		for (k = 0; k < multiplicand->colCount; k++)
 		{
-			multiplicand->data[i][j] = 0;
-			for (k = 0; k < multiplicand->colCount; k++)
-			{
-				multiplicand->data[i][j] += vecData[i] * saveMul[k][j];
-			}
-
+			vector4[i] += multiplicand->data[i][k] * vector4Saved[k];
 		}
 	}
-
-	return ILDA_SUCCESS;
+	ILDA_vector4 result = { .x = vector4[0], .y = vector4[1], .z = vector4[2], .w = vector4[3] };
+	return result;
 }
