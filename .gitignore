@@ -5,3 +5,8 @@
 #binaries
 /bin
 /bin-int
+
+#vim stuff
+/compile_commands
+/export-compile-commands
+.clangd

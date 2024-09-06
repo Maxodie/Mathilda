@@ -1,8 +1,8 @@
-
+require "export-compile-commands"
 
 if outputdir == nil then
 	outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
-end 
+end
 
 project "Mathilda"
 	location "Mathilda"
@@ -27,7 +27,7 @@ project "Mathilda"
 		"%{prj.name}/src"
 	}
 
-	defines 
+	defines
 	{
 		"ILDA_HAVE_INLINE"
 	}

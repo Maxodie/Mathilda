@@ -1,3 +1,5 @@
+require "export-compile-commands"
+
 workspace "Mathilda"
 	architecture "x64"
 	startproject "Mathilda"

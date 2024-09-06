@@ -27,7 +27,7 @@ typedef char ILDA_bool;
 	printf("\nILDA ERROR : ");\
 	__debugbreak();
 
-#define ILDA_ERROR_MSG(msg, ...) \
+#define ILDA_ERROR_INFO(msg, ...) \
 	printf("\nILDA ERROR : ");\
 	printf(msg, __VA_ARGS__);\
 	__debugbreak();

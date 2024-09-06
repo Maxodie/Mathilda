@@ -33,7 +33,13 @@
     <ClInclude Include="src\ILDA_type_on.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\matrix\ILDA_matrix_double.h">
+    <ClInclude Include="src\matrix\ILDA_matrix4x4_double.h">
+      <Filter>src\matrix</Filter>
+    </ClInclude>
+    <ClInclude Include="src\matrix\ILDA_matrix_size_off.h">
+      <Filter>src\matrix</Filter>
+    </ClInclude>
+    <ClInclude Include="src\matrix\ILDA_matrix_size_on.h">
       <Filter>src\matrix</Filter>
     </ClInclude>
     <ClInclude Include="src\vector\ILDA_vector_double.h">
