@@ -12,7 +12,7 @@ int main(void)
 
 	ILDA_matrix4x4 matrix4x4;
 	ILDA_vector4 vec4_ = { .x = 12.0, .y = 15.0, .z = 10.0, .w = 1 };
-	ILDA_vector4 vec3_ = {.x = 11.0, .y = 0.0, .z = 0.0};
+	ILDA_vector3 vec3_ = {.x = 11.0, .y = 2.0, .z = 3.0};
 	ILDA_matrix4x4_init_default(&matrix4x4);
 
 	ILDA_matrix4x4_set(0, 0, &matrix4x4, 1);
@@ -21,7 +21,7 @@ int main(void)
 	ILDA_matrix4x4_set(3, 3, &matrix4x4, 1);
 
 	printf("\n matrix 4x4 BEFORE : \n");
-	tempMatrixPrint(&matrix4x4);
+	//tempMatrixPrint(&matrix4x4);
 	printf("\n");
 
 	//ILDA_matrix4x4_translate(&matrix4x4, &vec3);
@@ -31,10 +31,12 @@ int main(void)
 
 	//printf("\n %f; %f; %f; %f", vec4.x, vec4.y, vec4.z, vec4.w);
 
-	ILDA_matrix4x4 scaleMatrix = ILDA_matrix4x4_scale(3, 5, 1);
+	ILDA_matrix4x4_scale(&matrix4x4, &vec3_);
 
-	printf("\n matrix 4x4 AFTER : \n");
-	tempMatrixPrint(&scaleMatrix);
+	//ILDA_matrix4x4 rotationMatrix = ILDA_matrix4x4_rotation(50, &vec3_);
+
+	printf("\n matrix 4x4 rotation : \n");
+	tempMatrixPrint(&matrix4x4);
 	printf("\n");
 }
 

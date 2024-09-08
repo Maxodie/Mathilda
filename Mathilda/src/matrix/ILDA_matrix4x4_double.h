@@ -36,10 +36,31 @@ INLINE_FUN ILDA_matrix4x4 ILDA_matrix4x4_translate(const ILDA_matrix4x4* identit
 	return mat4x4;
 }
 
-INLINE_FUN ILDA_matrix4x4 ILDA_matrix4x4_scale(double x, double y, double z)
+INLINE_FUN ILDA_bool ILDA_matrix4x4_scale(ILDA_matrix4x4* matrix4x4, const ILDA_vector3* vector3)
 {
-	ILDA_matrix4x4 matrix = { .rowCount = 4, .colCount = 4, .data = { {x, 0, 0, 0}, {0, y, 0, 0}, {0, 0, z, 0}, {0, 0, 0, 1} } };
-	return matrix;
+	ILDA_matrix4x4 result = { .rowCount = 4, .colCount = 4, .data = { {vector3->x, 0, 0, 0}, {0, vector3->y, 0, 0}, {0, 0, vector3->z, 0}, {0, 0, 0, 1} } };
+	ILDA_matrix4x4_mul_same(matrix4x4, &result);
+
+	return ILDA_SUCCESS;
+}
+
+INLINE_FUN ILDA_matrix4x4 ILDA_matrix4x4_rotation(double rotation, const ILDA_vector3* vector3)
+{
+    double x = vector3->x, y = vector3->y, z = vector3->z;
+
+
+	ILDA_matrix4x4 result = {
+		.rowCount = 4,
+		.colCount = 4,
+		.data = {
+			{ cos(rotation) + x * x * (1 - cos(rotation)), x * y * (1 - cos(rotation)) - z * sin(rotation), x * z * (1 - cos(rotation)) + y * sin(rotation), 0 },
+			{ y * x * (1 - cos(rotation)) + z * sin(rotation), cos(rotation) + y * y * (1 - cos(rotation)), y * z * (1 - cos(rotation)) - x * sin(rotation), 0 },
+			{ z * x * (1 - cos(rotation)) - y * sin(rotation), z * y * (1 - cos(rotation)) + x * sin(rotation), cos(rotation) + z * z * (1 - cos(rotation)), 0 },
+			{ 0, 0, 0, 0 }
+		}
+	};
+
+	return result;
 }
 
 
