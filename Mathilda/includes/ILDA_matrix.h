@@ -5,7 +5,7 @@
 
 //weird nerd matrix stuff
 #include "matrix/ILDA_matrix4x4_double.h"
-//#include "matrix/ILDA_matrix_int.h"
-//#include "matrix/ILDA_matrix_float.h"
+#include "matrix/ILDA_matrix3x3_double.h"
+#include "matrix/ILDA_matrix2x2_double.h"
 
 #endif

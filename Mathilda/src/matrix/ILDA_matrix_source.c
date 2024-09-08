@@ -6,9 +6,9 @@
 
 #include <string.h>
 //init
-//ILDA_bool ILDA_FUNCTION(ILDA_matrix4x4, init_alloc)( size_t rowCount, size_t colCount, ILDA_matrix4x4* matrix)
+//ILDA_bool ILDA_FUNCTION(ILDA_MATRIX(ILDA_matrix), init_alloc)( size_t rowCount, size_t colCount, ILDA_MATRIX(ILDA_matrix)* matrix)
 //{
-//	matrix->data = calloc(colCount * rowCount, sizeof(double)); //also try with void* and double*
+//	matrix->data = calloc(colCount * rowCount, sizeof(ILDA_BASE_TYPE)); //also try with void* and ILDA_BASE_TYPE*
 //
 //	if (NULL == matrix->data) return ILDA_FAIL;
 //
@@ -18,87 +18,114 @@
 //	return ILDA_SUCCESS;
 //}
 
-ILDA_bool ILDA_FUNCTION(ILDA_matrix4x4, init_default)(ILDA_matrix4x4* matrix)
-{
-		matrix->colCount = 4;
-		matrix->rowCount = 4;
-
-	return ILDA_SUCCESS;
-}
-
-//get / set
-double ILDA_FUNCTION(ILDA_matrix4x4, get)(size_t row, size_t col, const ILDA_matrix4x4* matrix)
-{
-	return matrix->data[row][col]; // same as *(matrix->data + row * matrix->rowCount + col)
-}
-
-void ILDA_FUNCTION(ILDA_matrix4x4, set)(size_t row, size_t col, ILDA_matrix4x4* matrix, double value)
-{
-	matrix->data[row][col] = value;
-}
-
-//operators
-ILDA_bool ILDA_FUNCTION(ILDA_matrix4x4, add)(ILDA_matrix4x4* augend, const ILDA_matrix4x4* addend)
-{
-	size_t i, j;
-	for (i = 0; i < augend->rowCount; i++)
+	ILDA_bool ILDA_FUNCTION(ILDA_MATRIX(ILDA_matrix), init_default)(ILDA_MATRIX(ILDA_matrix)* matrix)
 	{
-		for (j = 0; j < augend->colCount; j++)
-		{
-			augend->data[i][j] += addend->data[i][j];
-		}
+		matrix->colCount = ILDA_MATRIX_COL;
+		matrix->rowCount = ILDA_MATRIX_COL;
+
+		return ILDA_SUCCESS;
 	}
 
-	return ILDA_SUCCESS;
-}
-
-ILDA_bool ILDA_FUNCTION(ILDA_matrix4x4, sub)(ILDA_matrix4x4* minuend, const ILDA_matrix4x4* subtrahend)
-{
-	size_t i, j;
-	for (i = 0; i < minuend->rowCount; i++)
+	//get / set
+	ILDA_BASE_TYPE ILDA_FUNCTION(ILDA_MATRIX(ILDA_matrix), get)(size_t row, size_t col, const ILDA_MATRIX(ILDA_matrix)* matrix)
 	{
-		for (j = 0; j < minuend->colCount; j++)
-		{
-			minuend->data[i][j] -= subtrahend->data[i][j];
-		}
+		return matrix->data[row][col]; // same as *(matrix->data + row * matrix->rowCount + col)
 	}
 
-	return ILDA_SUCCESS;
-}
-
-ILDA_bool ILDA_FUNCTION(ILDA_matrix4x4, mul_same)(ILDA_matrix4x4* multiplicand, const ILDA_matrix4x4* multiplier)
-{
-	size_t i, j, k;
-	double saveMul[4][4];
-	memcpy(saveMul, multiplicand->data, sizeof(saveMul));
-	for (i = 0; i < multiplicand->rowCount; i++)
+	void ILDA_FUNCTION(ILDA_MATRIX(ILDA_matrix), set)(size_t row, size_t col, ILDA_MATRIX(ILDA_matrix)* matrix, ILDA_BASE_TYPE value)
 	{
-		for (j = 0; j < multiplicand->colCount; j++)
+		matrix->data[row][col] = value;
+	}
+
+	//operators
+	ILDA_bool ILDA_FUNCTION(ILDA_MATRIX(ILDA_matrix), add)(ILDA_MATRIX(ILDA_matrix)* augend, const ILDA_MATRIX(ILDA_matrix)* addend)
+	{
+		size_t i, j;
+		for (i = 0; i < augend->rowCount; i++)
 		{
-			multiplicand->data[i][j] = 0;
+			for (j = 0; j < augend->colCount; j++)
+			{
+				augend->data[i][j] += addend->data[i][j];
+			}
+		}
+
+		return ILDA_SUCCESS;
+	}
+
+	ILDA_bool ILDA_FUNCTION(ILDA_MATRIX(ILDA_matrix), sub)(ILDA_MATRIX(ILDA_matrix)* minuend, const ILDA_MATRIX(ILDA_matrix)* subtrahend)
+	{
+		size_t i, j;
+		for (i = 0; i < minuend->rowCount; i++)
+		{
+			for (j = 0; j < minuend->colCount; j++)
+			{
+				minuend->data[i][j] -= subtrahend->data[i][j];
+			}
+		}
+
+		return ILDA_SUCCESS;
+	}
+
+	ILDA_bool ILDA_FUNCTION(ILDA_MATRIX(ILDA_matrix), mul_same)(ILDA_MATRIX(ILDA_matrix)* multiplicand, const ILDA_MATRIX(ILDA_matrix)* multiplier)
+	{
+		size_t i, j, k;
+		ILDA_BASE_TYPE saveMul[ILDA_MATRIX_COL][ILDA_MATRIX_COL];
+		memcpy(saveMul, multiplicand->data, sizeof(saveMul));
+		for (i = 0; i < multiplicand->rowCount; i++)
+		{
+			for (j = 0; j < multiplicand->colCount; j++)
+			{
+				multiplicand->data[i][j] = 0;
+				for (k = 0; k < multiplicand->colCount; k++)
+				{
+					multiplicand->data[i][j] += multiplier->data[i][k] * saveMul[k][j];
+				}
+
+			}
+		}
+
+		return ILDA_SUCCESS;
+	}
+
+	ILDA_MATRIX_VECTOR_SIZE ILDA_FUNCTION(ILDA_MATRIX(ILDA_matrix), mul_vector)(const ILDA_MATRIX(ILDA_matrix)* multiplicand, const ILDA_MATRIX_VECTOR_SIZE* multiplier)
+	{
+		#ifdef ILDA_MATRIX4x4
+
+		ILDA_BASE_TYPE vectorSaved[ILDA_MATRIX_COL] = { multiplier->x, multiplier->y, multiplier->z, multiplier->w };
+
+		#elif defined(ILDA_MATRIX3x3)
+
+		ILDA_BASE_TYPE vectorSaved[ILDA_MATRIX_COL] = { multiplier->x, multiplier->y, multiplier->z };
+
+		#elif defined(ILDA_MATRIX2x2)
+
+		ILDA_BASE_TYPE vectorSaved[ILDA_MATRIX_COL] = { multiplier->x, multiplier->y };
+
+		#endif // ILDA_MATRIX4x4
+
+		ILDA_BASE_TYPE vector[ILDA_MATRIX_COL] = { 0 };
+		size_t i, k;
+		for (i = 0; i < multiplicand->rowCount; i++)
+		{
 			for (k = 0; k < multiplicand->colCount; k++)
 			{
-				multiplicand->data[i][j] += multiplier->data[i][k] * saveMul[k][j];
+				vector[i] += multiplicand->data[i][k] * vectorSaved[k];
 			}
-
 		}
-	}
 
-	return ILDA_SUCCESS;
-}
+		#ifdef ILDA_MATRIX4x4
 
-ILDA_vector4 ILDA_FUNCTION(ILDA_matrix4x4, mul_vector)(const ILDA_matrix4x4* multiplicand, const ILDA_vector4* multiplier)
-{
-	double vector4Saved[4] = { multiplier->x, multiplier->y, multiplier->z, multiplier->w };
-	double vector4[4] = {0};
-	size_t i, j, k;
-	for (i = 0; i < multiplicand->rowCount; i++)
-	{
-		for (k = 0; k < multiplicand->colCount; k++)
-		{
-			vector4[i] += multiplicand->data[i][k] * vector4Saved[k];
-		}
+		ILDA_MATRIX_VECTOR_SIZE result = { .x = vector[0], .y = vector[1], .z = vector[2], .w = vector[3] };
+
+		#elif defined(ILDA_MATRIX3x3)
+
+		ILDA_MATRIX_VECTOR_SIZE result = { .x = vector[0], .y = vector[1], .z = vector[2] };
+
+		#elif defined(ILDA_MATRIX2x2)
+
+		ILDA_MATRIX_VECTOR_SIZE result = { .x = vector[0], .y = vector[1] };
+
+		#endif
+		
+		return result;
 	}
-	ILDA_vector4 result = { .x = vector4[0], .y = vector4[1], .z = vector4[2], .w = vector4[3] };
-	return result;
-}

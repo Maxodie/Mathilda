@@ -51,6 +51,8 @@
     <ClInclude Include="src\vector\ILDA_vector_int.h">
       <Filter>src\vector</Filter>
     </ClInclude>
+    <ClInclude Include="src\matrix\ILDA_matrix3x3_double.h" />
+    <ClInclude Include="src\matrix\ILDA_matrix2x2_double.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\ILDA_main_test.c">

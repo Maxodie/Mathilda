@@ -31,7 +31,7 @@ int main(void)
 
 	//printf("\n %f; %f; %f; %f", vec4.x, vec4.y, vec4.z, vec4.w);
 
-	ILDA_matrix4x4_scale(&matrix4x4, &vec3_);
+	ILDA_scale(&matrix4x4, &vec3_);
 
 	//ILDA_matrix4x4 rotationMatrix = ILDA_matrix4x4_rotation(50, &vec3_);
 

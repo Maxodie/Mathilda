@@ -125,6 +125,8 @@
     <ClInclude Include="src\ILDA_core.h" />
     <ClInclude Include="src\ILDA_type_off.h" />
     <ClInclude Include="src\ILDA_type_on.h" />
+    <ClInclude Include="src\matrix\ILDA_matrix2x2_double.h" />
+    <ClInclude Include="src\matrix\ILDA_matrix3x3_double.h" />
     <ClInclude Include="src\matrix\ILDA_matrix4x4_double.h" />
     <ClInclude Include="src\matrix\ILDA_matrix_size_off.h" />
     <ClInclude Include="src\matrix\ILDA_matrix_size_on.h" />

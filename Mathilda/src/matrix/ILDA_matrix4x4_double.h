@@ -28,7 +28,7 @@ ILDA_bool ILDA_matrix4x4_mul_same(ILDA_matrix4x4* multiplicand, const ILDA_matri
 ILDA_vector4 ILDA_matrix4x4_mul_vector(const ILDA_matrix4x4* multiplicand, const ILDA_vector4* multiplier);
 
 //matrix4x4 only
-INLINE_FUN ILDA_matrix4x4 ILDA_matrix4x4_translate(const ILDA_matrix4x4* identity, const ILDA_vector3* multiplier)
+INLINE_FUN ILDA_matrix4x4 ILDA_translate(const ILDA_matrix4x4* identity, const ILDA_vector3* multiplier)
 {
 	ILDA_matrix4x4 mat4x4 = { .rowCount = 4, .colCount = 4, .data = { {0, 0, 0, multiplier->x}, {0, 0, 0, multiplier->y}, {0, 0, 0, multiplier->z}, {0, 0, 0, 0} } };
 	ILDA_matrix4x4_add(&mat4x4, identity);
@@ -36,7 +36,7 @@ INLINE_FUN ILDA_matrix4x4 ILDA_matrix4x4_translate(const ILDA_matrix4x4* identit
 	return mat4x4;
 }
 
-INLINE_FUN ILDA_bool ILDA_matrix4x4_scale(ILDA_matrix4x4* matrix4x4, const ILDA_vector3* vector3)
+INLINE_FUN ILDA_bool ILDA_scale(ILDA_matrix4x4* matrix4x4, const ILDA_vector3* vector3)
 {
 	ILDA_matrix4x4 result = { .rowCount = 4, .colCount = 4, .data = { {vector3->x, 0, 0, 0}, {0, vector3->y, 0, 0}, {0, 0, vector3->z, 0}, {0, 0, 0, 1} } };
 	ILDA_matrix4x4_mul_same(matrix4x4, &result);
@@ -44,7 +44,7 @@ INLINE_FUN ILDA_bool ILDA_matrix4x4_scale(ILDA_matrix4x4* matrix4x4, const ILDA_
 	return ILDA_SUCCESS;
 }
 
-INLINE_FUN ILDA_matrix4x4 ILDA_matrix4x4_rotation(double rotation, const ILDA_vector3* vector3)
+INLINE_FUN ILDA_matrix4x4 ILDA_rotation(double rotation, const ILDA_vector3* vector3)
 {
     double x = vector3->x, y = vector3->y, z = vector3->z;
 
