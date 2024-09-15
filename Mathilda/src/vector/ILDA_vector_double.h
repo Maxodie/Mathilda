@@ -56,9 +56,7 @@ INLINE_FUN ILDA_vector2d ILDA_vector2d_normalize(const ILDA_vector2d* vector2);
 INLINE_FUN ILDA_vector3d ILDA_vector3d_normalize(const ILDA_vector3d* vector3);
 INLINE_FUN ILDA_vector4d ILDA_vector4d_normalize(const ILDA_vector4d* vector4);
 
-INLINE_FUN ILDA_vector2d ILDA_vector2d_cross(const ILDA_vector2d* a, const ILDA_vector2d* b);
 INLINE_FUN ILDA_vector3d ILDA_vector3d_cross(const ILDA_vector3d* a, const ILDA_vector3d* b);
-INLINE_FUN ILDA_vector4d ILDA_vector4d_cross(const ILDA_vector4d* a, const ILDA_vector4d* b);
 
 INLINE_FUN double ILDA_vector2d_dot(const ILDA_vector2d* a, const ILDA_vector2d* b);
 INLINE_FUN double ILDA_vector3d_dot(const ILDA_vector3d* a, const ILDA_vector3d* b);

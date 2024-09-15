@@ -5,8 +5,11 @@ ILDA_STATIC_ASSERT(false, "ILDA MATRIX SOURCE : file is called but it was alread
 #define __ILDA_MATRIX_SPECIAL_SOURCE_CHECK__
 
 //matrix4x4 only
-ILDA_matrix4x4 ILDA_translate(const ILDA_matrix4x4* identity, const ILDA_vector3f* translation)
+ILDA_matrix4x4 ILDA_translation(const ILDA_matrix4x4* identity, const ILDA_vector3f* translation)
 {
+    ILDA_ASSERT(identity, "identity matrix in ILDA_translation is nullptr")
+    ILDA_ASSERT(translation, "translation ILDA_vector3f in ILDA_translation is nullptr")
+
     ILDA_matrix4x4 mat4x4 = { .rowCount = 4, .colCount = 4, .data = { {0, 0, 0, translation->x}, {0, 0, 0, translation->y}, {0, 0, 0, translation->z}, {0, 0, 0, 0} } };
     ILDA_matrix4x4_add(&mat4x4, identity);
 
@@ -15,6 +18,9 @@ ILDA_matrix4x4 ILDA_translate(const ILDA_matrix4x4* identity, const ILDA_vector3
 
 ILDA_bool ILDA_scale(ILDA_matrix4x4* matrix4x4, const ILDA_vector3f* scale)
 {
+    ILDA_ASSERT(matrix4x4, "matrix4x4 in ILDA_scale is nullptr")
+    ILDA_ASSERT(scale, "scale ILDA_vector3f in ILDA_scale is nullptr")
+
     ILDA_matrix4x4 result = { .rowCount = 4, .colCount = 4, .data = { {scale->x, 0, 0, 0}, {0, scale->y, 0, 0}, {0, 0, scale->z, 0}, {0, 0, 0, 1} } };
     ILDA_matrix4x4_mul_same(matrix4x4, &result);
 
@@ -23,6 +29,8 @@ ILDA_bool ILDA_scale(ILDA_matrix4x4* matrix4x4, const ILDA_vector3f* scale)
 
 ILDA_matrix4x4 ILDA_rotation(float rotation, const ILDA_vector3f* vector3)
 {
+    ILDA_ASSERT(vector3, "vector3 ILDA_vector3f in ILDA_rotation is nullptr")
+
     float x = vector3->x, y = vector3->y, z = vector3->z;
 
 
@@ -40,9 +48,12 @@ ILDA_matrix4x4 ILDA_rotation(float rotation, const ILDA_vector3f* vector3)
     return result;
 }
 
-//Look at target right handed for opengl TODO : left handed version for directX, Metal, Vulkan
-INLINE_FUN ILDA_matrix4x4 ILDA_matrix_look_at_r(const ILDA_vector3f* position, const ILDA_vector3f* target, const ILDA_vector3f* worldUp)
+ILDA_matrix4x4 ILDA_matrix_look_at_r(const ILDA_vector3f* position, const ILDA_vector3f* target, const ILDA_vector3f* worldUp)
 {
+    ILDA_ASSERT(position, "ILDA_vector3f position in ILDA_matrix_look_at_r is nullptr")
+    ILDA_ASSERT(target, "ILDA_vector3f target in ILDA_matrix_look_at_r is nullptr")
+    ILDA_ASSERT(worldUp, "ILDA_vector3f worldUp in ILDA_matrix_look_at_r is nullptr")
+
     // 2. Calculate cameraDirection
     ILDA_vector3f dir;
     ILDA_vector3f_copy(&dir, target);
@@ -69,4 +80,18 @@ INLINE_FUN ILDA_matrix4x4 ILDA_matrix_look_at_r(const ILDA_vector3f* position, c
     rotation.data[3][2] = ILDA_vector3f_dot(&za, position);
 
     return rotation;
+}
+
+
+ILDA_matrix4x4 ILDA_matrix_perspective_r(float fovy, float aspect, float zNear, float zFar)
+{
+    float tanHalfFovy = tanf(fovy / 2.f);
+
+    ILDA_matrix4x4 result = { .data = {0}, .colCount = 4, .rowCount = 4 };
+    result.data[0][0] = 1.f / (aspect * tanHalfFovy);
+    result.data[1][1] = 1.f / (tanHalfFovy);
+    result.data[2][2] = - (zFar + zNear) / (zFar - zNear);
+    result.data[2][3] = - 1.f;
+    result.data[3][2] = -(2.f * zFar * zNear) / (zFar - zNear);
+    return result;
 }

@@ -15,13 +15,22 @@ typedef char ILDA_bool;
 #define EXTERN extern
 
 #define ILDA_STATIC_ASSERT(condition, info) static_assert(condition, info)
+#define ILDA_ASSERT(x, ...)\
+	if(x) \
+	{ }\
+	else\
+	{\
+		ILDA_ERROR_INFO("%s Assertion Failed %s", #x, __VA_ARGS__); \
+		__debugbreak(); \
+	}
 
 #ifdef ILDA_HAVE_INLINE
-	#define INLINE_DECL static inline
-	#define INLINE_FUN EXTERN inline  
+#	define INLINE_DECL static inline
+#	define INLINE_FUN EXTERN inline  
+#	define INLINE inline  
 #else
-	#define INLINE_DECL
-	#define INLINE_FUN
+#	define INLINE_DECL
+#	define INLINE_FUN
 #endif
 
 #define ILDA_ERROR(msg) \

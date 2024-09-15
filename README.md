@@ -4,6 +4,8 @@ Mathilda is a maths library in C wich aim to be easier to understand and use tha
 
 # Premake5 build instructions
 
+You can run the GenerateSolution.bat if you are on visual studio 2022, you can personalize it if you are on a different platform.
+
 # About this project
 
 This is also a learning project by French computer science students.

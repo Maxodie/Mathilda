@@ -32,10 +32,13 @@ int main(void)
 	//printf("\n %f; %f; %f; %f", vec4.x, vec4.y, vec4.z, vec4.w);
 
 	//ILDA_scale(&matrix4x4, &vec3_);
-	ILDA_vector3f a = { .x = 5.0f, .y = 3.f, .z = 8.0f };
+	/*ILDA_vector3f a = { .x = 5.0f, .y = 3.f, .z = 8.0f };
 	ILDA_vector3f b = { .x = 4.0f, .y = 20.5f, .z = 7.0f };
 	ILDA_vector3f c = { .x = 0.f, .y = 1.f, .z = 0.0f };
-	ILDA_matrix4x4 lookAt = ILDA_matrix_look_at_r(&a, &b, &c);
+	ILDA_matrix4x4 lookAt = ILDA_matrix_look_at_r(&a, &b, &c);*/
+
+	float fovy = 1.5f, aspect = 159.f, zNear = 18.f, zFar = 845.f;
+	ILDA_matrix4x4 perspective = ILDA_matrix_perspective_r(fovy, aspect, zNear, zFar);
 	
 	//ILDA_vector3i vec4_o = { .x = 5, .y = 3, .z = 8};
 	//ILDA_vector3i vec3_o = { .x = 4, .y = 20, .z = 71 };
@@ -45,7 +48,7 @@ int main(void)
 	//ILDA_matrix4x4 rotationMatrix = ILDA_matrix4x4_rotation(50, &vec3_);
 
 	printf("\n matrix 4x4 rotation : \n");
-	tempMatrixPrint(&lookAt);
+	tempMatrixPrint(&perspective);
 	printf("\n");
 }
 
