@@ -4,6 +4,31 @@
 
 #define __ILDA_VECTOR_SOURCE_CHECK__
 
+//Copy
+ILDA_bool ILDA_FUNCTION(ILDA_vector2, copy)(ILDA_TYPE(ILDA_vector2)* base, const ILDA_TYPE(ILDA_vector2)* copy)
+{
+	base->x = copy->x;
+	base->y = copy->y;
+	return ILDA_SUCCESS;
+}
+
+ILDA_bool ILDA_FUNCTION(ILDA_vector3, copy)(ILDA_TYPE(ILDA_vector3)* base, const ILDA_TYPE(ILDA_vector3)* copy)
+{
+	base->x = copy->x;
+	base->y = copy->y;
+	base->z = copy->z;
+	return ILDA_SUCCESS;
+}
+
+ILDA_bool ILDA_FUNCTION(ILDA_vector4, copy)(ILDA_TYPE(ILDA_vector4)* base, const ILDA_TYPE(ILDA_vector4)* copy)
+{
+	base->x = copy->x;
+	base->y = copy->y;
+	base->z = copy->z;
+	base->w = copy->w;
+	return ILDA_SUCCESS;
+}
+
 //Operators
 ILDA_bool ILDA_FUNCTION(ILDA_vector2, equal)(const ILDA_TYPE(ILDA_vector2)* base, const ILDA_TYPE(ILDA_vector2)* compare)
 {
@@ -106,17 +131,78 @@ ILDA_bool ILDA_FUNCTION(ILDA_vector4, mul)(ILDA_TYPE(ILDA_vector4)* v, const ILD
 
 
 //get Length
-double ILDA_FUNCTION(ILDA_vector2, length)(ILDA_TYPE(ILDA_vector2)* v)
+ILDA_DEC_BASE_TYPE ILDA_FUNCTION(ILDA_vector2, length)(const ILDA_TYPE(ILDA_vector2)* v)
 {
-	return sqrt( v->x * v->x + v->y * v->y );
+#ifdef ILDA_BASE_DOUBLE
+	return sqrt(v->x * v->x + v->y * v->y);
+#endif // ILDA_BASE_DOUBLE
+	return sqrtf((float)v->x * v->x + v->y * v->y);
 }
 
-double ILDA_FUNCTION(ILDA_vector3, length)(ILDA_TYPE(ILDA_vector3)* v)
+ILDA_DEC_BASE_TYPE ILDA_FUNCTION(ILDA_vector3, length)(const ILDA_TYPE(ILDA_vector3)* v)
 {
+#ifdef ILDA_BASE_DOUBLE
 	return sqrt(v->x * v->x + v->y * v->y + v->z * v->z);
+#endif // ILDA_BASE_DOUBLE
+	return sqrtf((ILDA_DEC_BASE_TYPE)v->x * v->x + v->y * v->y + v->z * v->z);
 }
 
-double ILDA_FUNCTION(ILDA_vector4, length)(ILDA_TYPE(ILDA_vector4)* v)
+ILDA_DEC_BASE_TYPE ILDA_FUNCTION(ILDA_vector4, length)(const ILDA_TYPE(ILDA_vector4)* v)
 {
+#ifdef ILDA_BASE_DOUBLE
 	return sqrt(v->x * v->x + v->y * v->y + v->z * v->z + v->w * v->w);
+#endif // ILDA_BASE_DOUBLE
+	return sqrtf((ILDA_DEC_BASE_TYPE)v->x * v->x + v->y * v->y + v->z * v->z + v->w * v->w);
+}
+
+//specials
+ILDA_DEC_TYPE(ILDA_vector2) ILDA_FUNCTION(ILDA_vector2, normalize)(const ILDA_TYPE(ILDA_vector2)* vector2)
+{
+	ILDA_DEC_BASE_TYPE length = ILDA_FUNCTION(ILDA_vector2, length)(vector2);
+	return (ILDA_DEC_TYPE(ILDA_vector2)) { .x = vector2->x / length, .y = vector2->y / length };
+}
+
+ILDA_DEC_TYPE(ILDA_vector3) ILDA_FUNCTION(ILDA_vector3, normalize)(const ILDA_TYPE(ILDA_vector3)* vector3)
+{
+	ILDA_DEC_BASE_TYPE length = ILDA_FUNCTION(ILDA_vector3, length)(vector3);
+	return (ILDA_DEC_TYPE(ILDA_vector3)) { .x = vector3->x / length, .y = vector3->y / length, .z = vector3->z / length };
+}
+
+ILDA_DEC_TYPE(ILDA_vector4) ILDA_FUNCTION(ILDA_vector4, normalize)(const ILDA_TYPE(ILDA_vector4)* vector4)
+{
+	ILDA_DEC_BASE_TYPE length = ILDA_FUNCTION(ILDA_vector4, length)(vector4);
+	return (ILDA_DEC_TYPE(ILDA_vector4)) { .x = vector4->x / length, .y = vector4->y / length, .z = vector4->z / length, .w = vector4->w / length };
+}
+
+
+ILDA_TYPE(ILDA_vector2) ILDA_FUNCTION(ILDA_vector2, cross)(const ILDA_TYPE(ILDA_vector2)* a, const ILDA_TYPE(ILDA_vector2)* b)
+{
+	//TODO
+	ILDA_ERROR("ERROR vector2 cross do not exist");
+}
+
+ILDA_TYPE(ILDA_vector3) ILDA_FUNCTION(ILDA_vector3, cross)(const ILDA_TYPE(ILDA_vector3)* a, const ILDA_TYPE(ILDA_vector3)* b)
+{
+	return (ILDA_TYPE(ILDA_vector3)) { .x = (a->y * b->z) - (a->z * b->y), .y = (a->z * b->x) - (a->x * b->z), .z = (a->x * b->y) - (a->y * b->x) };
+}
+
+ILDA_TYPE(ILDA_vector4) ILDA_FUNCTION(ILDA_vector4, cross)(const ILDA_TYPE(ILDA_vector4)* a, const ILDA_TYPE(ILDA_vector4)* b)
+{
+	//TODO
+	ILDA_ERROR("ERROR vector4 cross do not exist");
+}
+
+ILDA_BASE_TYPE ILDA_FUNCTION(ILDA_vector2, dot)(const ILDA_TYPE(ILDA_vector2)* a, const ILDA_TYPE(ILDA_vector2)* b)
+{
+	return a->x * b->x + a->y * b->y;
+}
+
+ILDA_BASE_TYPE ILDA_FUNCTION(ILDA_vector3, dot)(const ILDA_TYPE(ILDA_vector3)* a, const ILDA_TYPE(ILDA_vector3)* b)
+{
+	return a->x * b->x + a->y * b->y + a->z * b->z;
+}
+
+ILDA_BASE_TYPE ILDA_FUNCTION(ILDA_vector4, dot)(const ILDA_TYPE(ILDA_vector4)* a, const ILDA_TYPE(ILDA_vector4)* b)
+{
+	return a->x * b->x + a->y * b->y + a->z * b->z + a->w * b->w;
 }

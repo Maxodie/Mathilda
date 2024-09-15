@@ -4,15 +4,15 @@
 #include "ILDA_vector.h"
 #include "ILDA_matrix.h"
 
-void tempMatrixPrint(const ILDA_matrix4x4* matrix);
+inline void tempMatrixPrint(const ILDA_matrix4x4* matrix);
 
 int main(void)
 {
 	printf("Hello Mathilda !");/////////////////////////////
 
 	ILDA_matrix4x4 matrix4x4;
-	ILDA_vector4 vec4_ = { .x = 12.0, .y = 15.0, .z = 10.0, .w = 1 };
-	ILDA_vector3 vec3_ = {.x = 11.0, .y = 2.0, .z = 3.0};
+	ILDA_vector4f vec4_ = { .x = 12.0, .y = 15.0, .z = 10.0, .w = 1 };
+	ILDA_vector3f vec3_ = {.x = 11.0, .y = 2.0, .z = 3.0};
 	ILDA_matrix4x4_init_default(&matrix4x4);
 
 	ILDA_matrix4x4_set(0, 0, &matrix4x4, 1);
@@ -27,16 +27,25 @@ int main(void)
 	//ILDA_matrix4x4_translate(&matrix4x4, &vec3);
 	//ILDA_matrix4x4 translateMatrix = ILDA_matrix4x4_translate(&ILDA_mat4x4_identity, &vec3_);
 	//tempMatrixPrint(&translateMatrix);
-	//ILDA_vector4 vec4 = ILDA_matrix4x4_mul_vector(&translateMatrix,&vec4_);
+	//ILDA_vector4_float vec4 = ILDA_matrix4x4_mul_vector(&translateMatrix,&vec4_);
 
 	//printf("\n %f; %f; %f; %f", vec4.x, vec4.y, vec4.z, vec4.w);
 
-	ILDA_scale(&matrix4x4, &vec3_);
+	//ILDA_scale(&matrix4x4, &vec3_);
+	ILDA_vector3f a = { .x = 5.0f, .y = 3.f, .z = 8.0f };
+	ILDA_vector3f b = { .x = 4.0f, .y = 20.5f, .z = 7.0f };
+	ILDA_vector3f c = { .x = 0.f, .y = 1.f, .z = 0.0f };
+	ILDA_matrix4x4 lookAt = ILDA_matrix_look_at_r(&a, &b, &c);
+	
+	//ILDA_vector3i vec4_o = { .x = 5, .y = 3, .z = 8};
+	//ILDA_vector3i vec3_o = { .x = 4, .y = 20, .z = 71 };
+	//int cross = ILDA_vector3i_dot(&vec4_o, &vec3_o);
+	//printf("\n\nx : %d", cross);
 
 	//ILDA_matrix4x4 rotationMatrix = ILDA_matrix4x4_rotation(50, &vec3_);
 
 	printf("\n matrix 4x4 rotation : \n");
-	tempMatrixPrint(&matrix4x4);
+	tempMatrixPrint(&lookAt);
 	printf("\n");
 }
 

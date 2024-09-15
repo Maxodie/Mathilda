@@ -1,8 +1,5 @@
 #undef __ILDA_MATRIX_SIZE__
 
-#undef CONCAT_NO_SPACEx
-#undef CONCAT_NO_SPACE
-
 #undef ILDA_MATRIX
 #undef ILDA_MATRIX_COL
 #undef ILDA_MATRIX_VECTOR_SIZE

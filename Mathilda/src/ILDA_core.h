@@ -3,6 +3,7 @@
 
 #include <math.h>
 #include <stdarg.h>
+#include <assert.h>
 
 #define ILDA_SUCCESS 1
 #define ILDA_FAIL 0
