@@ -119,6 +119,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="include\ILDA_core.h" />
     <ClInclude Include="include\ILDA_matrix\ILDA_matrix.h" />
     <ClInclude Include="include\ILDA_matrix\ILDA_matrix2x2_float.h" />
     <ClInclude Include="include\ILDA_matrix\ILDA_matrix3x3_float.h" />
@@ -128,7 +129,6 @@
     <ClInclude Include="include\ILDA_vector\ILDA_vector_float.h" />
     <ClInclude Include="include\ILDA_vector\ILDA_vector_int.h" />
     <ClInclude Include="src\ILDA_constants.h" />
-    <ClInclude Include="src\ILDA_core.h" />
     <ClInclude Include="src\ILDA_type_off.h" />
     <ClInclude Include="src\ILDA_type_on.h" />
     <ClInclude Include="src\matrix\ILDA_matrix_size_off.h" />

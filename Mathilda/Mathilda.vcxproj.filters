@@ -21,6 +21,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\ILDA_core.h">
+      <Filter>include</Filter>
+    </ClInclude>
     <ClInclude Include="include\ILDA_matrix\ILDA_matrix.h">
       <Filter>include\ILDA_matrix</Filter>
     </ClInclude>
@@ -46,9 +49,6 @@
       <Filter>include\ILDA_vector</Filter>
     </ClInclude>
     <ClInclude Include="src\ILDA_constants.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\ILDA_core.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\ILDA_type_off.h">
