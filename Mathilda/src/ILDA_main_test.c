@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "ILDA_vector.h"
-#include "ILDA_matrix.h"
+#include "ILDA_vector/ILDA_vector.h"
+#include "ILDA_matrix/ILDA_matrix.h"
 
 inline void tempMatrixPrint(const ILDA_matrix4x4* matrix);
 

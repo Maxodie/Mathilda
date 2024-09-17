@@ -5,7 +5,7 @@
 
 #define ILDA_MATRIX2x2
 #include "matrix/ILDA_matrix_size_on.h"
-#include "matrix/ILDA_matrix2x2_float.h"
+#include "ILDA_matrix/ILDA_matrix2x2_float.h"
 #include "matrix/ILDA_matrix_source.c"
 #include "matrix/ILDA_matrix_size_off.h"
 #undef ILDA_MATRIX2x2
@@ -14,7 +14,7 @@
 
 #define ILDA_MATRIX3x3
 #include "matrix/ILDA_matrix_size_on.h"
-#include "matrix/ILDA_matrix3x3_float.h"
+#include "ILDA_matrix/ILDA_matrix3x3_float.h"
 #include "matrix/ILDA_matrix_source.c"
 #include "matrix/ILDA_matrix_size_off.h"
 #undef ILDA_MATRIX3x3
@@ -23,7 +23,7 @@
 
 #define ILDA_MATRIX4x4
 #include "matrix/ILDA_matrix_size_on.h"
-#include "matrix/ILDA_matrix4x4_float.h"
+#include "ILDA_matrix/ILDA_matrix4x4_float.h"
 #include "matrix/ILDA_matrix_source.c"
 #include "matrix/ILDA_matrix_size_off.h"
 #undef ILDA_MATRIX4x4

@@ -10,5 +10,15 @@ workspace "Mathilda"
 	}
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
+runIldaMainTest = true
 
-include "include_premake5.lua"
+if outputdir == nil then
+	outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
+end
+
+
+if outputdir == nil then
+	outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
+end
+
+include("include_premake5.lua")

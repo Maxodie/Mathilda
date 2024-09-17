@@ -5,7 +5,13 @@ end
 
 project "Mathilda"
 	location "Mathilda"
-	kind "ConsoleApp"
+	
+	if runIldaMainTest == nil then
+		kind "StaticLib"
+	else
+		kind "ConsoleApp"
+	end
+	
 	language "C"
 	cdialect "C11"
 	staticruntime "on"
@@ -15,14 +21,14 @@ project "Mathilda"
 
 	files
 	{
-		"%{prj.name}/includes/**.h",
+		"%{prj.name}/include/**.h",
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.c"
 	}
 
 	includedirs
 	{
-		"%{prj.name}/includes",
+		"%{prj.name}/include",
 		"%{prj.name}/src"
 	}
 
@@ -31,5 +37,4 @@ project "Mathilda"
 		"ILDA_HAVE_INLINE"
 	}
 
-	filter { "files:**source.c" }
-		flags {"ExcludeFromBuild"}
+	removefiles { "**source.c" }

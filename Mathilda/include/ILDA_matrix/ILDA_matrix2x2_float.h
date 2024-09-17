@@ -2,7 +2,7 @@
 #define __ILDA_MATRIX2x2_DOUBLE__
 
 #include "ILDA_core.h"
-#include "vector/ILDA_vector_float.h"
+#include "ILDA_vector/ILDA_vector_float.h"
 
 typedef struct ILDA_matrix2x2 {
 	float data[2][2];

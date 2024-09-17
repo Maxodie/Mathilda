@@ -2,7 +2,7 @@
 #define __ILDA_VECTOR_INT__
 
 #include "ILDA_core.h"
-#include "vector/ILDA_vector_float.h"
+#include "ILDA_vector/ILDA_vector_float.h"
 
 typedef struct {
 	int x;
