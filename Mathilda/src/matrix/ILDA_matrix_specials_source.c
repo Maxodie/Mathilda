@@ -10,7 +10,7 @@ ILDA_matrix4x4 ILDA_translation(const ILDA_matrix4x4* identity, const ILDA_vecto
     ILDA_ASSERT(identity, "identity matrix in ILDA_translation is nullptr")
     ILDA_ASSERT(translation, "translation ILDA_vector3f in ILDA_translation is nullptr")
 
-    ILDA_matrix4x4 mat4x4 = { .rowCount = 4, .colCount = 4, .data = { {0, 0, 0, translation->x}, {0, 0, 0, translation->y}, {0, 0, 0, translation->z}, {0, 0, 0, 0} } };
+    ILDA_matrix4x4 mat4x4 = { .data = { {0, 0, 0, translation->x}, {0, 0, 0, translation->y}, {0, 0, 0, translation->z}, {0, 0, 0, 0} } };
     ILDA_matrix4x4_add(&mat4x4, identity);
 
     return mat4x4;
@@ -21,7 +21,7 @@ ILDA_bool ILDA_scale(ILDA_matrix4x4* matrix4x4, const ILDA_vector3f* scale)
     ILDA_ASSERT(matrix4x4, "matrix4x4 in ILDA_scale is nullptr")
     ILDA_ASSERT(scale, "scale ILDA_vector3f in ILDA_scale is nullptr")
 
-    ILDA_matrix4x4 result = { .rowCount = 4, .colCount = 4, .data = { {scale->x, 0, 0, 0}, {0, scale->y, 0, 0}, {0, 0, scale->z, 0}, {0, 0, 0, 1} } };
+    ILDA_matrix4x4 result = { .data = { {scale->x, 0, 0, 0}, {0, scale->y, 0, 0}, {0, 0, scale->z, 0}, {0, 0, 0, 1} } };
     ILDA_matrix4x4_mul_same(matrix4x4, &result);
 
     return ILDA_SUCCESS;
@@ -35,8 +35,6 @@ ILDA_matrix4x4 ILDA_rotation(float rotation, const ILDA_vector3f* vector3)
 
 
     ILDA_matrix4x4 result = {
-        .rowCount = 4,
-        .colCount = 4,
         .data = {
             { cosf(rotation) + x * x * (1 - cosf(rotation)), x * y * (1 - cosf(rotation)) - z * sinf(rotation), x * z * (1 - cosf(rotation)) + y * sinf(rotation), 0 },
             { y * x * (1 - cosf(rotation)) + z * sinf(rotation), cosf(rotation) + y * y * (1 - cosf(rotation)), y * z * (1 - cosf(rotation)) - x * sinf(rotation), 0 },
@@ -65,7 +63,7 @@ ILDA_matrix4x4 ILDA_matrix_look_at_r(const ILDA_vector3f* position, const ILDA_v
     // 4. Calculate camera up vector
     ILDA_vector3f ya = ILDA_vector3f_cross(&nzc, &za);
 
-    ILDA_matrix4x4 rotation = { .colCount = 4, .rowCount = 4, .data = {{1,0,0,0},{0,1,0,0},{0,0,1,0},{0,0,0,1}} };
+    ILDA_matrix4x4 rotation = { .data = {{1,0,0,0},{0,1,0,0},{0,0,1,0},{0,0,0,1}} };
     rotation.data[0][0] = nzc.x;
     rotation.data[1][0] = nzc.y;
     rotation.data[2][0] = nzc.z;
@@ -87,7 +85,7 @@ ILDA_matrix4x4 ILDA_matrix_perspective_r(float fovy, float aspect, float zNear, 
 {
     float tanHalfFovy = tanf(fovy / 2.f);
 
-    ILDA_matrix4x4 result = { .data = {0}, .colCount = 4, .rowCount = 4 };
+    ILDA_matrix4x4 result = { .data = {0} };
     result.data[0][0] = 1.f / (aspect * tanHalfFovy);
     result.data[1][1] = 1.f / (tanHalfFovy);
     result.data[2][2] = - (zFar + zNear) / (zFar - zNear);
