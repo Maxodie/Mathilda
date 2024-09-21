@@ -15,11 +15,11 @@ static const size_t ILDA_matrix2x2_col = 2;
 
 //init
 //ILDA_bool ILDA_matrix2x2_init_alloc(ILDA_matrix2x2 matrix);
-INLINE_FUN ILDA_bool ILDA_matrix2x2_init_identity(ILDA_matrix2x2* matrix, float v);
+EXTERN ILDA_bool ILDA_matrix2x2_init_identity(ILDA_matrix2x2* matrix, float v);
 
 //get / setB
-INLINE_FUN float ILDA_matrix2x2_get(size_t row, size_t col, const ILDA_matrix2x2* matrix);
-INLINE_FUN void ILDA_matrix2x2_set(size_t row, size_t col, ILDA_matrix2x2* matrix, float value);
+EXTERN float ILDA_matrix2x2_get(size_t row, size_t col, const ILDA_matrix2x2* matrix);
+EXTERN void ILDA_matrix2x2_set(size_t row, size_t col, ILDA_matrix2x2* matrix, float value);
 
 //basic operators
 EXTERN ILDA_bool ILDA_matrix2x2_add(ILDA_matrix2x2* m1, const ILDA_matrix2x2* m2);
@@ -29,7 +29,7 @@ EXTERN ILDA_matrix2x2 ILDA_matrix2x2_add_c(const ILDA_matrix2x2* augend, const I
 EXTERN ILDA_bool ILDA_matrix2x2_sub(ILDA_matrix2x2* m1, const ILDA_matrix2x2* m2);
 EXTERN ILDA_matrix2x2 ILDA_matrix2x2_sub_c(const ILDA_matrix2x2* minuend, const ILDA_matrix2x2* subtrahend);
 
-
+//do not put the same matrix in container and in m1 or m2
 EXTERN ILDA_bool ILDA_matrix2x2_mul_same_source(ILDA_matrix2x2* container, const ILDA_matrix2x2* m1, const ILDA_matrix2x2* m2);
 EXTERN ILDA_bool ILDA_matrix2x2_mul_same(ILDA_matrix2x2* m1, const ILDA_matrix2x2* m2);
 EXTERN ILDA_matrix2x2 ILDA_matrix2x2_mul_same_c(const ILDA_matrix2x2* multiplicand, const ILDA_matrix2x2* multiplier);

@@ -15,11 +15,11 @@ static const size_t ILDA_matrix4x4_col = 4;
 
 //init
 //ILDA_bool ILDA_matrix4x4_init_alloc(ILDA_matrix4x4 matrix);
-INLINE_FUN ILDA_bool ILDA_matrix4x4_init_identity(ILDA_matrix4x4* matrix, float v);
+EXTERN ILDA_bool ILDA_matrix4x4_init_identity(ILDA_matrix4x4* matrix, float v);
 
 //get / setB
-INLINE_FUN float ILDA_matrix4x4_get(size_t row, size_t col, const ILDA_matrix4x4* matrix);
-INLINE_FUN void ILDA_matrix4x4_set(size_t row, size_t col, ILDA_matrix4x4* matrix, float value);
+EXTERN float ILDA_matrix4x4_get(size_t row, size_t col, const ILDA_matrix4x4* matrix);
+EXTERN void ILDA_matrix4x4_set(size_t row, size_t col, ILDA_matrix4x4* matrix, float value);
 
 //basic operators
 EXTERN ILDA_bool ILDA_matrix4x4_add(ILDA_matrix4x4* m1, const ILDA_matrix4x4* m2);
@@ -29,7 +29,7 @@ EXTERN ILDA_matrix4x4 ILDA_matrix4x4_add_c(const ILDA_matrix4x4* augend, const I
 EXTERN ILDA_bool ILDA_matrix4x4_sub(ILDA_matrix4x4* m1, const ILDA_matrix4x4* m2);
 EXTERN ILDA_matrix4x4 ILDA_matrix4x4_sub_c(const ILDA_matrix4x4* minuend, const ILDA_matrix4x4* subtrahend);
 
-
+//do not put the same matrix in container and in m1 or m2
 EXTERN ILDA_bool ILDA_matrix4x4_mul_same_source(ILDA_matrix4x4* container, const ILDA_matrix4x4* m1, const ILDA_matrix4x4* m2);
 EXTERN ILDA_bool ILDA_matrix4x4_mul_same(ILDA_matrix4x4* m1, const ILDA_matrix4x4* m2);
 EXTERN ILDA_matrix4x4 ILDA_matrix4x4_mul_same_c(const ILDA_matrix4x4* multiplicand, const ILDA_matrix4x4* multiplier);
@@ -39,13 +39,13 @@ EXTERN ILDA_vector4f ILDA_matrix4x4_mul_vector(const ILDA_matrix4x4* multiplican
 
 //matrix4x4 only
 //TODO : translate fun
-INLINE_FUN ILDA_bool ILDA_scale(ILDA_matrix4x4* matrix4x4, const ILDA_vector3f* scale);
+EXTERN ILDA_bool ILDA_scale(ILDA_matrix4x4* matrix4x4, const ILDA_vector3f* scale);
 //TODO : rotate fun
-INLINE_FUN ILDA_matrix4x4 ILDA_translation(const ILDA_matrix4x4* identity, const ILDA_vector3f* translation);
-INLINE_FUN ILDA_matrix4x4 ILDA_rotation(float rotation, const ILDA_vector3f* vector3);
+EXTERN ILDA_matrix4x4 ILDA_translation(const ILDA_matrix4x4* identity, const ILDA_vector3f* translation);
+EXTERN ILDA_matrix4x4 ILDA_rotation(float rotation, const ILDA_vector3f* vector3);
 //Look at target right handed for opengl TODO : left handed version for directX, Metal, Vulkan
-INLINE_FUN ILDA_matrix4x4 ILDA_matrix_look_at_r(const ILDA_vector3f* position, const ILDA_vector3f* target, const ILDA_vector3f* worldUp);
+EXTERN ILDA_matrix4x4 ILDA_matrix_look_at_r(const ILDA_vector3f* position, const ILDA_vector3f* target, const ILDA_vector3f* worldUp);
 //Look at target right handed for opengl TODO : left handed version for directX, Metal, Vulkan
-INLINE_FUN ILDA_matrix4x4 ILDA_matrix_perspective_r(float fovy, float aspect, float zNear, float zFar);
+EXTERN ILDA_matrix4x4 ILDA_matrix_perspective_r(float fovy, float aspect, float zNear, float zFar);
 //basics
 #endif
