@@ -30,4 +30,4 @@ This is also a learning project by French computer science students.
 
 ### Licence
 
-???
+Apache License 2.0
