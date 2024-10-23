@@ -5,7 +5,7 @@ ILDA_STATIC_ASSERT(false, "ILDA MATRIX SOURCE : file is called but it was alread
 #define __ILDA_MATRIX_SPECIAL_SOURCE_CHECK__
 
 //matrix4x4 only
-INLINE ILDA_matrix4x4 ILDA_translation(const ILDA_matrix4x4* identity, const ILDA_vector3f* translation)
+ILDA_INLINE ILDA_matrix4x4 ILDA_translation(const ILDA_matrix4x4* identity, const ILDA_vector3f* translation)
 {
     ILDA_ASSERT(identity, "identity matrix in ILDA_translation is nullptr")
     ILDA_ASSERT(translation, "translation ILDA_vector3f in ILDA_translation is nullptr")
@@ -16,7 +16,7 @@ INLINE ILDA_matrix4x4 ILDA_translation(const ILDA_matrix4x4* identity, const ILD
     return mat4x4;
 }
 
-INLINE ILDA_bool ILDA_scale(ILDA_matrix4x4* matrix4x4, const ILDA_vector3f* scale)
+ILDA_INLINE ILDA_bool ILDA_scale(ILDA_matrix4x4* matrix4x4, const ILDA_vector3f* scale)
 {
     ILDA_ASSERT(matrix4x4, "matrix4x4 in ILDA_scale is nullptr")
     ILDA_ASSERT(scale, "scale ILDA_vector3f in ILDA_scale is nullptr")
@@ -27,7 +27,7 @@ INLINE ILDA_bool ILDA_scale(ILDA_matrix4x4* matrix4x4, const ILDA_vector3f* scal
     return ILDA_SUCCESS;
 }
 
-INLINE ILDA_matrix4x4 ILDA_rotation(float rotation, const ILDA_vector3f* vector3)
+ILDA_INLINE ILDA_matrix4x4 ILDA_rotation(float rotation, const ILDA_vector3f* vector3)
 {
     ILDA_ASSERT(vector3, "vector3 ILDA_vector3f in ILDA_rotation is nullptr")
 
@@ -46,7 +46,7 @@ INLINE ILDA_matrix4x4 ILDA_rotation(float rotation, const ILDA_vector3f* vector3
     return result;
 }
 
-INLINE ILDA_matrix4x4 ILDA_matrix_look_at_r(const ILDA_vector3f* position, const ILDA_vector3f* target, const ILDA_vector3f* worldUp)
+ILDA_INLINE ILDA_matrix4x4 ILDA_matrix_look_at_r(const ILDA_vector3f* position, const ILDA_vector3f* target, const ILDA_vector3f* worldUp)
 {
     ILDA_ASSERT(position, "ILDA_vector3f position in ILDA_matrix_look_at_r is nullptr")
     ILDA_ASSERT(target, "ILDA_vector3f target in ILDA_matrix_look_at_r is nullptr")
@@ -81,7 +81,7 @@ INLINE ILDA_matrix4x4 ILDA_matrix_look_at_r(const ILDA_vector3f* position, const
 }
 
 
-INLINE ILDA_matrix4x4 ILDA_matrix_perspective_r(float fovy, float aspect, float zNear, float zFar)
+ILDA_INLINE ILDA_matrix4x4 ILDA_matrix_perspective_r(float fovy, float aspect, float zNear, float zFar)
 {
     float tanHalfFovy = tanf(fovy / 2.f);
 

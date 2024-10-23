@@ -2,6 +2,7 @@
 	ILDA_STATIC_ASSERT(false, "ILDA MATRIX SOURCE : file is called but it was already on");
 #endif
 
+#include <string.h>
 #define __ILDA_MATRIX_SOURCE_CHECK__
 //init
 //ILDA_bool CONCAT2(ILDA_MATRIX(ILDA_matrix), init_alloc)( size_t rowCount, size_t colCount, ILDA_MATRIX(ILDA_matrix)* matrix)
@@ -16,7 +17,7 @@
 //	return ILDA_SUCCESS;
 //}
 
-INLINE ILDA_bool CONCAT2(ILDA_MATRIX(ILDA_matrix), init_identity)(ILDA_MATRIX(ILDA_matrix)* matrix, float v)
+ILDA_INLINE ILDA_bool CONCAT2(ILDA_MATRIX(ILDA_matrix), init_identity)(ILDA_MATRIX(ILDA_matrix)* matrix, float v)
 {
 	int i;
 	for (i = 0; i < ILDA_MATRIX_ROW; i++)//assuming the matrix is squar
@@ -28,7 +29,7 @@ INLINE ILDA_bool CONCAT2(ILDA_MATRIX(ILDA_matrix), init_identity)(ILDA_MATRIX(IL
 }
 
 //get / set
-INLINE ILDA_BASE_TYPE CONCAT2(ILDA_MATRIX(ILDA_matrix), get)(size_t row, size_t col, const ILDA_MATRIX(ILDA_matrix)* matrix)
+ILDA_INLINE ILDA_BASE_TYPE CONCAT2(ILDA_MATRIX(ILDA_matrix), get)(size_t row, size_t col, const ILDA_MATRIX(ILDA_matrix)* matrix)
 {
 	return matrix->data[row][col]; // same as *(matrix->data + row * ILDA_MATRIX_ROW + col)
 }
@@ -39,7 +40,7 @@ void CONCAT2(ILDA_MATRIX(ILDA_matrix), set)(size_t row, size_t col, ILDA_MATRIX(
 }
 
 //operators
-INLINE ILDA_bool CONCAT2(ILDA_MATRIX(ILDA_matrix), add)(ILDA_MATRIX(ILDA_matrix)* m1, const ILDA_MATRIX(ILDA_matrix)* m2)
+ILDA_INLINE ILDA_bool CONCAT2(ILDA_MATRIX(ILDA_matrix), add)(ILDA_MATRIX(ILDA_matrix)* m1, const ILDA_MATRIX(ILDA_matrix)* m2)
 {
 	/*size_t i, j;
 	for (i = 0; i < ILDA_MATRIX_ROW; i++)
@@ -91,7 +92,7 @@ INLINE ILDA_bool CONCAT2(ILDA_MATRIX(ILDA_matrix), add)(ILDA_MATRIX(ILDA_matrix)
 }
 
 
-INLINE ILDA_MATRIX(ILDA_matrix) CONCAT2(ILDA_MATRIX(ILDA_matrix), add_c)(const ILDA_MATRIX(ILDA_matrix)* augend, const ILDA_MATRIX(ILDA_matrix)* addend)
+ILDA_INLINE ILDA_MATRIX(ILDA_matrix) CONCAT2(ILDA_MATRIX(ILDA_matrix), add_c)(const ILDA_MATRIX(ILDA_matrix)* augend, const ILDA_MATRIX(ILDA_matrix)* addend)
 {
 	ILDA_MATRIX(ILDA_matrix) matrix = {0};
 	memcpy(matrix.data, augend->data, sizeof(augend->data));
@@ -99,7 +100,7 @@ INLINE ILDA_MATRIX(ILDA_matrix) CONCAT2(ILDA_MATRIX(ILDA_matrix), add_c)(const I
 	return matrix;
 }
 
-INLINE ILDA_bool CONCAT2(ILDA_MATRIX(ILDA_matrix), sub)(ILDA_MATRIX(ILDA_matrix)* m1, const ILDA_MATRIX(ILDA_matrix)* m2)
+ILDA_INLINE ILDA_bool CONCAT2(ILDA_MATRIX(ILDA_matrix), sub)(ILDA_MATRIX(ILDA_matrix)* m1, const ILDA_MATRIX(ILDA_matrix)* m2)
 {
 	/*size_t i, j;
 	for (i = 0; i < ILDA_MATRIX_ROW; i++)
@@ -151,7 +152,7 @@ INLINE ILDA_bool CONCAT2(ILDA_MATRIX(ILDA_matrix), sub)(ILDA_MATRIX(ILDA_matrix)
 }
 
 
-INLINE ILDA_MATRIX(ILDA_matrix) CONCAT2(ILDA_MATRIX(ILDA_matrix), sub_c)(const ILDA_MATRIX(ILDA_matrix)* minuend, const ILDA_MATRIX(ILDA_matrix)* subtrahend)
+ILDA_INLINE ILDA_MATRIX(ILDA_matrix) CONCAT2(ILDA_MATRIX(ILDA_matrix), sub_c)(const ILDA_MATRIX(ILDA_matrix)* minuend, const ILDA_MATRIX(ILDA_matrix)* subtrahend)
 {
 	ILDA_MATRIX(ILDA_matrix) matrix = { 0 };
 	memcpy(matrix.data, minuend->data, sizeof(minuend->data));
@@ -161,7 +162,7 @@ INLINE ILDA_MATRIX(ILDA_matrix) CONCAT2(ILDA_MATRIX(ILDA_matrix), sub_c)(const I
 
 /// MULTIPLICATIONS
 
-INLINE ILDA_bool CONCAT2(ILDA_MATRIX(ILDA_matrix), mul_same_source)(ILDA_MATRIX(ILDA_matrix)* container, const  ILDA_MATRIX(ILDA_matrix)* m1, const  ILDA_MATRIX(ILDA_matrix)* m2)
+ILDA_INLINE ILDA_bool CONCAT2(ILDA_MATRIX(ILDA_matrix), mul_same_source)(ILDA_MATRIX(ILDA_matrix)* container, const  ILDA_MATRIX(ILDA_matrix)* m1, const  ILDA_MATRIX(ILDA_matrix)* m2)
 {
 
 #ifdef ILDA_MATRIX4x4
@@ -209,7 +210,7 @@ INLINE ILDA_bool CONCAT2(ILDA_MATRIX(ILDA_matrix), mul_same_source)(ILDA_MATRIX(
 	return ILDA_SUCCESS;
 }
 
-INLINE ILDA_bool CONCAT2(ILDA_MATRIX(ILDA_matrix), mul_same)(ILDA_MATRIX(ILDA_matrix)* m1, const ILDA_MATRIX(ILDA_matrix)* m2)
+ILDA_INLINE ILDA_bool CONCAT2(ILDA_MATRIX(ILDA_matrix), mul_same)(ILDA_MATRIX(ILDA_matrix)* m1, const ILDA_MATRIX(ILDA_matrix)* m2)
 {
 	ILDA_MATRIX(ILDA_matrix) matrix = { 0 };
 	memcpy(matrix.data, m1->data, sizeof(m1->data));
@@ -219,7 +220,7 @@ INLINE ILDA_bool CONCAT2(ILDA_MATRIX(ILDA_matrix), mul_same)(ILDA_MATRIX(ILDA_ma
 }
 
 
-INLINE ILDA_MATRIX(ILDA_matrix) CONCAT2(ILDA_MATRIX(ILDA_matrix), mul_same_c)(const ILDA_MATRIX(ILDA_matrix)* multiplicand, const ILDA_MATRIX(ILDA_matrix)* multiplier)
+ILDA_INLINE ILDA_MATRIX(ILDA_matrix) CONCAT2(ILDA_MATRIX(ILDA_matrix), mul_same_c)(const ILDA_MATRIX(ILDA_matrix)* multiplicand, const ILDA_MATRIX(ILDA_matrix)* multiplier)
 {
 	ILDA_MATRIX(ILDA_matrix) matrix = { 0 };
 	CONCAT2(ILDA_MATRIX(ILDA_matrix), mul_same_source)(&matrix, multiplicand, multiplier);
@@ -227,7 +228,7 @@ INLINE ILDA_MATRIX(ILDA_matrix) CONCAT2(ILDA_MATRIX(ILDA_matrix), mul_same_c)(co
 }
 
 
-INLINE ILDA_MATRIX_VECTOR_SIZE CONCAT2(ILDA_MATRIX(ILDA_matrix), mul_vector)(const ILDA_MATRIX(ILDA_matrix)* multiplicand, const ILDA_MATRIX_VECTOR_SIZE* multiplier)
+ILDA_INLINE ILDA_MATRIX_VECTOR_SIZE CONCAT2(ILDA_MATRIX(ILDA_matrix), mul_vector)(const ILDA_MATRIX(ILDA_matrix)* multiplicand, const ILDA_MATRIX_VECTOR_SIZE* multiplier)
 {
 #ifdef ILDA_MATRIX4x4
 
