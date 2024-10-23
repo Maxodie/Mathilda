@@ -57,6 +57,9 @@
     <ClInclude Include="include\ILDA_utils\ILDA_random_float.h">
       <Filter>include\ILDA_utils</Filter>
     </ClInclude>
+    <ClInclude Include="include\ILDA_utils\ILDA_random_int.h">
+      <Filter>include\ILDA_utils</Filter>
+    </ClInclude>
     <ClInclude Include="include\ILDA_utils\ILDA_utils.h">
       <Filter>include\ILDA_utils</Filter>
     </ClInclude>

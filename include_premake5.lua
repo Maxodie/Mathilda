@@ -5,15 +5,15 @@ end
 
 project "Mathilda"
 	location "Mathilda"
-	
+
 	if runIldaMainTest == nil then
 		kind "StaticLib"
 	else
 		kind "ConsoleApp"
 	end
-	
+
 	language "C"
-	cdialect "C11"
+	cdialect "C17"
 	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
