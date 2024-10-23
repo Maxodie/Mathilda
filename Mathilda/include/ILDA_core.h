@@ -27,6 +27,7 @@ typedef char ILDA_bool;
 #ifdef ILDA_HAVE_INLINE
 #	define INLINE_DECL static inline
 #	define INLINE inline  
+#	define EXTERN_INLINE EXTERN inline  
 #else
 #	define INLINE_DECL
 #endif

@@ -40,7 +40,8 @@
     <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
-  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
@@ -124,6 +125,10 @@
     <ClInclude Include="include\ILDA_matrix\ILDA_matrix3x3_float.h" />
     <ClInclude Include="include\ILDA_matrix\ILDA_matrix4x4_float.h" />
     <ClInclude Include="include\ILDA_trigo\ILDA_trigo.h" />
+    <ClInclude Include="include\ILDA_trigo\ILDA_trigo_float.h" />
+    <ClInclude Include="include\ILDA_utils\ILDA_random_float.h" />
+    <ClInclude Include="include\ILDA_utils\ILDA_random_int.h" />
+    <ClInclude Include="include\ILDA_utils\ILDA_utils.h" />
     <ClInclude Include="include\ILDA_vector\ILDA_vector.h" />
     <ClInclude Include="include\ILDA_vector\ILDA_vector_double.h" />
     <ClInclude Include="include\ILDA_vector\ILDA_vector_float.h" />
@@ -133,14 +138,15 @@
     <ClInclude Include="src\ILDA_type_on.h" />
     <ClInclude Include="src\matrix\ILDA_matrix_size_off.h" />
     <ClInclude Include="src\matrix\ILDA_matrix_size_on.h" />
-    <ClInclude Include="include\ILDA_trigo\trigo_float.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\ILDA_main_test.c" />
     <ClCompile Include="src\matrix\ILDA_matrix_link.c" />
-    <ClCompile Include="src\trigo\trigo_float.c" />
+    <ClCompile Include="src\trigo\ILDA_trigo_float.c" />
+    <ClCompile Include="src\utils\ILDA_utils_link.c" />
     <ClCompile Include="src\vector\ILDA_vector_link.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
-  <ImportGroup Label="ExtensionTargets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
 </Project>

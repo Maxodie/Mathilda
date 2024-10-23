@@ -3,8 +3,6 @@
 #endif
 
 #define __ILDA_MATRIX_SOURCE_CHECK__
-
-#include <string.h>
 //init
 //ILDA_bool CONCAT2(ILDA_MATRIX(ILDA_matrix), init_alloc)( size_t rowCount, size_t colCount, ILDA_MATRIX(ILDA_matrix)* matrix)
 //{

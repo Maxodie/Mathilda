@@ -7,6 +7,12 @@
     <Filter Include="include\ILDA_matrix">
       <UniqueIdentifier>{86F0D2CB-F251-B0D9-7BBF-F68BE71FE798}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\ILDA_trigo">
+      <UniqueIdentifier>{16F4958A-02D8-56E0-6B38-5133573B4162}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\ILDA_utils">
+      <UniqueIdentifier>{0226A98A-EE09-6AE0-576A-6433436D5462}</UniqueIdentifier>
+    </Filter>
     <Filter Include="include\ILDA_vector">
       <UniqueIdentifier>{047710E1-70D8-EDEE-F945-34A165A624AE}</UniqueIdentifier>
     </Filter>
@@ -15,6 +21,12 @@
     </Filter>
     <Filter Include="src\matrix">
       <UniqueIdentifier>{51029D6A-3DBA-DEB7-A6C1-B713929879A8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\trigo">
+      <UniqueIdentifier>{81782FB6-EDE2-E32C-3621-95D2A2CAC181}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\utils">
+      <UniqueIdentifier>{6DAA42B6-D914-F72C-2253-A8D28EFCD481}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\vector">
       <UniqueIdentifier>{CF88DA7F-BB40-1CCD-2448-F528101FB7BD}</UniqueIdentifier>
@@ -35,6 +47,18 @@
     </ClInclude>
     <ClInclude Include="include\ILDA_matrix\ILDA_matrix4x4_float.h">
       <Filter>include\ILDA_matrix</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ILDA_trigo\ILDA_trigo.h">
+      <Filter>include\ILDA_trigo</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ILDA_trigo\ILDA_trigo_float.h">
+      <Filter>include\ILDA_trigo</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ILDA_utils\ILDA_random_float.h">
+      <Filter>include\ILDA_utils</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ILDA_utils\ILDA_utils.h">
+      <Filter>include\ILDA_utils</Filter>
     </ClInclude>
     <ClInclude Include="include\ILDA_vector\ILDA_vector.h">
       <Filter>include\ILDA_vector</Filter>
@@ -63,8 +87,6 @@
     <ClInclude Include="src\matrix\ILDA_matrix_size_on.h">
       <Filter>src\matrix</Filter>
     </ClInclude>
-    <ClInclude Include="include\ILDA_trigo\ILDA_trigo.h" />
-    <ClInclude Include="include\ILDA_trigo\trigo_float.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\ILDA_main_test.c">
@@ -73,9 +95,14 @@
     <ClCompile Include="src\matrix\ILDA_matrix_link.c">
       <Filter>src\matrix</Filter>
     </ClCompile>
+    <ClCompile Include="src\trigo\ILDA_trigo_float.c">
+      <Filter>src\trigo</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utils\ILDA_utils_link.c">
+      <Filter>src\utils</Filter>
+    </ClCompile>
     <ClCompile Include="src\vector\ILDA_vector_link.c">
       <Filter>src\vector</Filter>
     </ClCompile>
-    <ClCompile Include="src\trigo\trigo_float.c" />
   </ItemGroup>
 </Project>

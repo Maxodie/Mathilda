@@ -1,9 +1,9 @@
 #include <stdio.h>
-#include <stdlib.h>
 
 #include "ILDA_vector/ILDA_vector.h"
 #include "ILDA_matrix/ILDA_matrix.h"
 #include "ILDA_trigo/ILDA_trigo.h"
+#include "ILDA_utils/ILDA_utils.h"
 
 inline void tempMatrixPrint(const ILDA_matrix4x4* matrix);
 
@@ -74,6 +74,17 @@ int main(void)
 	/*printf("\nmatrix 4x4 rotation :\n");
 	tempMatrixPrint(&result);
 	printf("\n");*/
+
+	/*for (int i = 0; i < 50; i++)
+	{
+		int random = ILDA_randomi(5, 8);
+		printf("\nvlaue int : %d", random);
+	}
+	for (int i = 0; i < 50; i++)
+	{
+		float randomf = ILDA_randomf(5.5f, 8.2f);
+		printf("\nvlaue float : %f", randomf);
+	}*/
 }
 
 void tempMatrixPrint(const ILDA_matrix4x4* matrix)
