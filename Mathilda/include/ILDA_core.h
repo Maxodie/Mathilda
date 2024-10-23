@@ -29,9 +29,9 @@ typedef char ILDA_bool;
 #	define ILDA_INLINE inline  
 #	define ILDA_EXTERN_INLINE EXTERN inline  
 #else
-#	define INLINE_DECL
-#	define INLINE
-#	define EXTERN_INLINE
+#	define ILDA_INLINE_DECL
+#	define ILDA_INLINE
+#	define ILDA_EXTERN_INLINE
 #endif
 
 #define ILDA_ERROR(msg) \
