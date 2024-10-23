@@ -1,7 +1,6 @@
 #ifndef __ILDA_VECTOR_INT__
 #define __ILDA_VECTOR_INT__
 
-#include "ILDA_core.h"
 #include "ILDA_vector/ILDA_vector_float.h"
 
 typedef struct {
