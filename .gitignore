@@ -6,8 +6,15 @@
 #binaries
 /bin
 /bin-int
+/lib
+*.exe
 
-#vim stuff
-/compile_commands
-/export-compile-commands
-.clangd
+#build
+/Mathilda/build
+
+#vim and cmake stuff
+/compile_commands.json
+/CMakeCache.txt
+/cmake_install.cmake
+/CMakeFiles
+/MakeFile

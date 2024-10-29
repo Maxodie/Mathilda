@@ -4,7 +4,7 @@ if outputdir == nil then
 end
 
 project "Mathilda"
-	location "Mathilda"
+	location "Mathilda/build"
 
 	if runIldaMainTest == nil then
 		kind "StaticLib"
