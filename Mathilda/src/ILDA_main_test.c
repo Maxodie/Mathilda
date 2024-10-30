@@ -29,11 +29,6 @@ int main(void)
 	//ILDA_matrix4x4 translateMatrix = ILDA_matrix4x4_translate(&ILDA_mat4x4_identity, &vec3_);
 	//tempMatrixPrint(&translateMatrix);
 	//ILDA_vector4_float vec4 = ILDA_matrix4x4_mul_vector(&translateMatrix,&vec4_);
-    ILDA_vector2i v1 = {.x = 5, .y = 8};
-    ILDA_vector2i v2 = {.x = 6, .y = 7};
-    int dotResult = ILDA_vector2i_dot(&v1, &v2);
-
-    printf("value dot vec2i test smid : %d", dotResult); //don't exist yet'
     //printf("\n %f; %f; %f; %f", vec4.x, vec4.y, vec4.z, vec4.w);
 
 	//ILDA_scale(&matrix4x4, &vec3_);
