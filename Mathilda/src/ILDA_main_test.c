@@ -33,7 +33,7 @@ int main(void)
     ILDA_vector2i v2 = {.x = 6, .y = 7};
     int dotResult = ILDA_vector2i_dot(&v1, &v2);
 
-    printf("value dot vec2i test smid : %d", dotResult);
+    printf("value dot vec2i test smid : %d", dotResult); //don't exist yet'
     //printf("\n %f; %f; %f; %f", vec4.x, vec4.y, vec4.z, vec4.w);
 
 	//ILDA_scale(&matrix4x4, &vec3_);
