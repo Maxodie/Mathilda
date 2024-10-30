@@ -1,7 +1,7 @@
 #include "ILDA_trigo/ILDA_trigo_float.h"
 #include "ILDA_core.h"
 
-ILDA_INLINE float ILDA_radians(float degree)
+ILDA_FUN_DECL float ILDA_radians(float degree)
 {
 	return degree * 0.01745329251994329576923690768489f;
 }

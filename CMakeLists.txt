@@ -9,7 +9,14 @@ set(CMAKE_C_STANDARD_REQUIRED True)
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D__USE_MINGW_ANSI_STDIO=1")
 
 #defines
-add_compile_definitions(HAVE_ILDA_INLIE)
+add_compile_definitions(HAVE_ILDA_INLINE)
+add_compile_definitions(
+    $<$<CONFIG:Debug>:ILDA_DEBUG>
+    $<$<CONFIG:Debug>:ILDA_ENABLE_ASSERTS>
+    $<$<CONFIG:Release>:ILDA_RELEASE>
+    $<$<CONFIG:Release>:ILDA_ENABLE_ASSERTS>
+    $<$<CONFIG:Dist>:ILDA_DIST>
+)
 
 #files (sources and headers)
 file(GLOB_RECURSE SRC_FILES "./${MATHILDA}/src/**.c" "${MATHILDA}src/**.cpp")
@@ -39,7 +46,7 @@ target_include_directories(${MATHILDA} PRIVATE "./${MATHILDA}/src")
 #set binaries folder
 if(NOT TARGET_ARCH)
     if(CMAKE_SYSTEM_PROCESSOR STREQUAL "x86_64" OR CMAKE_SYSTEM_PROCESSOR STREQUAL "AMD64")
-        set(TARGET_ARCH "x64")
+        set(TARGET_ARCH "x86_64")
     elseif(CMAKE_SYSTEM_PROCESSOR STREQUAL "x86")
         set(TARGET_ARCH "x86")
     elseif(CMAKE_SYSTEM_PROCESSOR STREQUAL "aarch64")

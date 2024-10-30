@@ -11,7 +11,8 @@
 
 #build
 /Mathilda/build
-
+/Mathilda/.cache
+/Mathilda/.clangd
 #vim and cmake stuff
 /compile_commands.json
 /CMakeCache.txt

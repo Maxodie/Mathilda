@@ -38,3 +38,28 @@ project "Mathilda"
 	}
 
 	removefiles { "**source.c" }
+
+    filter "configurations:Debug"
+		defines
+		{
+			"ILDA_DEBUG",
+			"ILDA_ENABLE_ASSERTS"
+		}
+		runtime "Debug"
+		symbols "on"
+
+	filter "configurations:Release"
+		defines
+		{
+			"ILDA_RELEASE",
+			"ILDA_ENABLE_ASSERTS"
+        }
+		runtime "Release"
+		optimize "on"
+		symbols "on"
+
+    filter "configurations:Dist"
+		defines "ILDA_DIST"
+		runtime "Release"
+		optimize "on"
+		symbols "on"
