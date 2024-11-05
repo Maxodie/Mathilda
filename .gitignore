@@ -2,6 +2,8 @@
 #visual studio temporary files
 .vs/
 *.sln
+*.vcxproj
+*.vcxproj.filters
 
 #binaries
 /bin
