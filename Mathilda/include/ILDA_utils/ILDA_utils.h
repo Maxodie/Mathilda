@@ -3,7 +3,7 @@
 
 #include "ILDA_core.h"
 
-#include "ILDA_utils/ILDA_random_float.h"
-#include "ILDA_utils/ILDA_random_int.h"
+#include "ILDA_utils/ILDA_utils_float.h"
+#include "ILDA_utils/ILDA_utils_int.h"
 
 #endif
