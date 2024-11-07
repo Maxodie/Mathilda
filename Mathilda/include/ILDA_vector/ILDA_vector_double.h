@@ -3,18 +3,18 @@
 
 #include "ILDA_core.h"
 
-typedef struct {
+typedef struct ILDA_vector2d {
 	double x;
 	double y;
 } ILDA_vector2d;
 
-typedef struct {
+typedef struct ILDA_vector3d {
 	double x;
 	double y;
 	double z;
 } ILDA_vector3d;
 
-typedef struct {
+typedef struct ILDA_vector4d {
 	double x;
 	double y;
 	double z;
