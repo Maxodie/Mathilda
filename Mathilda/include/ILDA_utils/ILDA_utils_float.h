@@ -7,6 +7,6 @@
 ILDA_FUN_DECL float ILDA_randomf(float a, float b);
 
 //clamp number between a and b (include)
-ILDA_FUN_DECL float ILDA_clampf(float value, float min, float max);
+//ILDA_FUN_DECL float ILDA_clampf(float value, float min, float max);
 
 #endif
