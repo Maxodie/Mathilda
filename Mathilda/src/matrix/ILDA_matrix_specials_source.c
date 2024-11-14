@@ -27,11 +27,11 @@ ILDA_FUN_DECL ILDA_bool ILDA_scale(ILDA_matrix4x4* matrix4x4, const ILDA_vector3
     return ILDA_SUCCESS;
 }
 
-ILDA_FUN_DECL ILDA_matrix4x4 ILDA_rotation(float rotation, const ILDA_vector3f* vector3)
+ILDA_FUN_DECL ILDA_matrix4x4 ILDA_rotation(float rotation, const ILDA_vector3f* axisVector)
 {
-    ILDA_ASSERT(vector3, "vector3 ILDA_vector3f in ILDA_rotation is nullptr")
+    ILDA_ASSERT(axisVector, "vector3 ILDA_vector3f in ILDA_rotation is nullptr")
 
-    float x = vector3->x, y = vector3->y, z = vector3->z;
+    float x = axisVector->x, y = axisVector->y, z = axisVector->z;
 
 
     ILDA_matrix4x4 result = {
