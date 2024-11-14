@@ -41,7 +41,7 @@ ILDA_FUN_DECL ILDA_vector4f ILDA_matrix4x4_mul_vector(const ILDA_matrix4x4* mult
 ILDA_FUN_DECL ILDA_bool ILDA_scale(ILDA_matrix4x4* matrix4x4, const ILDA_vector3f* scale);
 //TODO : rotate fun
 ILDA_FUN_DECL ILDA_matrix4x4 ILDA_translation(const ILDA_matrix4x4* identity, const ILDA_vector3f* translation);
-ILDA_FUN_DECL ILDA_matrix4x4 ILDA_rotation(float rotation, const ILDA_vector3f* vector3);
+ILDA_FUN_DECL ILDA_matrix4x4 ILDA_rotation(float rotation, const ILDA_vector3f* axisVector);
 //Look at target right handed for opengl TODO : left handed version for directX, Metal, Vulkan
 ILDA_FUN_DECL ILDA_matrix4x4 ILDA_matrix_look_at_r(const ILDA_vector3f* position, const ILDA_vector3f* target, const ILDA_vector3f* worldUp);
 //Look at target right handed for opengl TODO : left handed version for directX, Metal, Vulkan
