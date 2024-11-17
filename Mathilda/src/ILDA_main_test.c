@@ -51,12 +51,12 @@ int main(void)
 
 	//ILDA_matrix4x4 rotationMatrix = ILDA_matrix4x4_rotation(50, &vec3_);
 
-	ILDA_matrix4x4 projection = ILDA_matrix_perspective_r(ILDA_radians(45.f), (float)800 / (float)600, 0.1f, 100.0f);
+	ILDA_matrix4x4 projection = ILDA_perspective_r(ILDA_radians(45.f), (float)800 / (float)600, 0.1f, 100.0f);
 
 	ILDA_vector3f location = { .x = 4, .y = 3, .z = 3 };// Camera is at (4,3,3), in World Space
 	ILDA_vector3f target = { .x = 0, .y = 0, .z = 0 };// and looks at the origin
 	ILDA_vector3f worldUp = { .x = 0, .y = 1, .z = 0 };// Head is up (set to 0,-1,0 to look upside-down)
-	ILDA_matrix4x4 view = ILDA_matrix_look_at_r(&location, &target, &worldUp);
+	ILDA_matrix4x4 view = ILDA_look_at_r(&location, &target, &worldUp);
 
 	// Model matrix : an identity matrix (model will be at the origin)
 	ILDA_matrix4x4 model = ILDA_matrix4x4_identity;
