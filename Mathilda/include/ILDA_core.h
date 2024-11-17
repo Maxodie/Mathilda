@@ -14,6 +14,7 @@ typedef char ILDA_bool;
 
 #define EXTERN extern
 
+//#define ILDA_FORCE_LEFT_HANDED, by default mathilda is right handled
 
 #ifdef ILDA_ENABLE_ASSERTS
 #   define ILDA_ASSERT(x, ...)\

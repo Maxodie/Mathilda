@@ -1,6 +1,7 @@
 #ifndef __ILDA_MATRIX4x4_DOUBLE__
 #define __ILDA_MATRIX4x4_DOUBLE__
 
+#include "ILDA_core.h"
 #include "ILDA_vector/ILDA_vector_float.h"
 
 typedef struct ILDA_matrix4x4 {
@@ -42,9 +43,20 @@ ILDA_FUN_DECL ILDA_bool ILDA_scale(ILDA_matrix4x4* matrix4x4, const ILDA_vector3
 //TODO : rotate fun
 ILDA_FUN_DECL ILDA_matrix4x4 ILDA_translation(const ILDA_matrix4x4* identity, const ILDA_vector3f* translation);
 ILDA_FUN_DECL ILDA_matrix4x4 ILDA_rotation(float rotation, const ILDA_vector3f* axisVector);
-//Look at target right handed for opengl TODO : left handed version for directX, Metal, Vulkan
-ILDA_FUN_DECL ILDA_matrix4x4 ILDA_matrix_look_at_r(const ILDA_vector3f* position, const ILDA_vector3f* target, const ILDA_vector3f* worldUp);
-//Look at target right handed for opengl TODO : left handed version for directX, Metal, Vulkan
-ILDA_FUN_DECL ILDA_matrix4x4 ILDA_matrix_perspective_r(float fovy, float aspect, float zNear, float zFar);
-//basics
+
+//Look at matrix right handed version for OpenGL and default in Mathilda
+ILDA_FUN_DECL ILDA_matrix4x4 ILDA_look_at_r(const ILDA_vector3f* position, const ILDA_vector3f* target, const ILDA_vector3f* worldUp);
+
+//Perspective matrix right handed version for OpenGL and default in Mathilda
+ILDA_FUN_DECL ILDA_matrix4x4 ILDA_perspective_r(float fovy, float aspect, float zNear, float zFar);
+
+//Look at matrix left handed for Vulkan, DirectX, Metal, ...
+ILDA_FUN_DECL ILDA_matrix4x4 ILDA_look_at_l(const ILDA_vector3f* position, const ILDA_vector3f* target, const ILDA_vector3f* worldUp);
+
+//Perspective matrix left handed for Vulkan, DirectX, Metal, ...
+ILDA_FUN_DECL ILDA_matrix4x4 ILDA_perspective_l(float fovy, float aspect, float zNear, float zFar);
+
+ILDA_FUN_DECL ILDA_matrix4x4 ILDA_look_at(const ILDA_vector3f* position, const ILDA_vector3f* target, const ILDA_vector3f* worldUp);
+
+ILDA_FUN_DECL ILDA_matrix4x4 ILDA_perspective(float fovy, float aspect, float zNear, float zFar);
 #endif
