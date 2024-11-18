@@ -37,6 +37,13 @@ project "Mathilda"
 		"ILDA_HAVE_INLINE"
 	}
 
+    if ILDA_FORCE_LEFT_HANDED == true then
+        defines
+        {
+            "ILDA_FORCE_LEFT_HANDED"
+        }
+    end
+
 	removefiles { "**source.c" }
 
     filter "configurations:Debug"
