@@ -2,6 +2,7 @@
 #define __ILDA_VECTOR_FLOAT__
 
 #include "ILDA_vector/ILDA_vector_double.h"
+#include "ILDA_quaternion/ILDA_quaternion.h"
 
 typedef struct ILDA_vector2f {
 	float x;
@@ -61,5 +62,7 @@ ILDA_FUN_DECL ILDA_vector3f ILDA_vector3f_cross(const ILDA_vector3f* a, const IL
 ILDA_FUN_DECL float ILDA_vector2f_dot(const ILDA_vector2f* a, const ILDA_vector2f* b);
 ILDA_FUN_DECL float ILDA_vector3f_dot(const ILDA_vector3f* a, const ILDA_vector3f* b);
 ILDA_FUN_DECL float ILDA_vector4f_dot(const ILDA_vector4f* a, const ILDA_vector4f* b);
+
+ILDA_vector3f ILDA_vector3_transform(const ILDA_vector3f* v, const ILDA_quat* q);
 
 #endif
