@@ -143,17 +143,18 @@ ILDA_FUN_DECL ILDA_matrix4x4 ILDA_perspective_l(float fovy, float aspect, float 
 ILDA_FUN_DECL ILDA_matrix4x4 ILDA_look_at(const ILDA_vector3f* position, const ILDA_vector3f* target, const ILDA_vector3f* worldUp)
 {
 #   ifdef ILDA_FORCE_LEFT_HANDED
-        ILDA_look_at_l(position, target, worldUp);
+        return ILDA_look_at_l(position, target, worldUp);
 #   else
-        ILDA_look_at_r(position, target, worldUp);
+        return ILDA_look_at_r(position, target, worldUp);
 #   endif
 }
 
 ILDA_FUN_DECL ILDA_matrix4x4 ILDA_perspective(float fovy, float aspect, float zNear, float zFar)
 {
 #   ifdef ILDA_FORCE_LEFT_HANDED
-        ILDA_perspective_l(fovy, aspect, zNear, zFar);
+        return ILDA_perspective_l(fovy, aspect, zNear, zFar);
 #   else
-        ILDA_perspective_r(fovy, aspect, zNear, zFar);
+        return ILDA_perspective_r(fovy, aspect, zNear, zFar);
 #   endif
+
 }
