@@ -8,11 +8,15 @@ typedef struct ILDA_vector2d {
 	double y;
 } ILDA_vector2d;
 
+static const ILDA_vector2d ILDA_vector2d_one = {.x = 1, .y = 1};
+
 typedef struct ILDA_vector3d {
 	double x;
 	double y;
 	double z;
 } ILDA_vector3d;
+
+static const ILDA_vector3d ILDA_vector3d_one = {.x = 1, .y = 1, .z = 1};
 
 typedef struct ILDA_vector4d {
 	double x;
@@ -20,6 +24,8 @@ typedef struct ILDA_vector4d {
 	double z;
 	double w;
 } ILDA_vector4d;
+
+static const ILDA_vector4d ILDA_vector4d_one = {.x = 1, .y = 1, .z = 1, .w = 1};
 
 //copy
 ILDA_FUN_DECL ILDA_bool ILDA_vector2d_copy(ILDA_vector2d* base, const ILDA_vector2d* copy);
