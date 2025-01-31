@@ -59,4 +59,6 @@ ILDA_FUN_DECL ILDA_matrix4x4 ILDA_perspective_l(float fovy, float aspect, float 
 ILDA_FUN_DECL ILDA_matrix4x4 ILDA_look_at(const ILDA_vector3f* position, const ILDA_vector3f* target, const ILDA_vector3f* worldUp);
 
 ILDA_FUN_DECL ILDA_matrix4x4 ILDA_perspective(float fovy, float aspect, float zNear, float zFar);
+
+ILDA_FUN_DECL ILDA_matrix4x4 ILDA_eulerAngleXYZ(float x, float y, float z);
 #endif
