@@ -159,7 +159,7 @@ ILDA_FUN_DECL ILDA_matrix4x4 ILDA_perspective(float fovy, float aspect, float zN
 
 }
 
-ILDA_FUN_DECL ILDA_matrix4x4 ILDA_eulerAnglesXYZ(float x, float y, float z)
+ILDA_FUN_DECL ILDA_matrix4x4 ILDA_eulerAngleXYZ(float x, float y, float z)
 {
     float c1 = cosf(x);
     float c2 = cosf(y);
