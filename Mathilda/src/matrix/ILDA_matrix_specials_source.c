@@ -159,7 +159,7 @@ ILDA_FUN_DECL ILDA_matrix4x4 ILDA_perspective(float fovy, float aspect, float zN
 
 }
 
-ILDA_FUN_DECL ILDA_matrix4x4 ILDA_euleurAnglesXYZ(float x, float y, float z)
+ILDA_FUN_DECL ILDA_matrix4x4 ILDA_eulerAnglesXYZ(float x, float y, float z)
 {
     float c1 = cosf(x);
     float c2 = cosf(y);
@@ -168,7 +168,7 @@ ILDA_FUN_DECL ILDA_matrix4x4 ILDA_euleurAnglesXYZ(float x, float y, float z)
     float s2 = sinf(y);
     float s3 = sinf(z);
 
-    ILDA_matrix4x4 result;
+    ILDA_matrix4x4 result = { 0 };
     result.data[0][0] = c2 * c3;
     result.data[0][1] =-c1 * s3 + s1 * s2 * s3;
     result.data[0][2] = s1 * s3 + c1 * s2 * c3;
