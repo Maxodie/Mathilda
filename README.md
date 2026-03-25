@@ -1,6 +1,6 @@
 # Mathilda - a maths library
 
-Mathilda is a maths library in C wich aim to be easier to understand and use than gsl. Especialy to build with Premake5.
+Mathilda is a maths library in C wich aim to be an easy math library mainly for games.
 
 # build instructions
 
