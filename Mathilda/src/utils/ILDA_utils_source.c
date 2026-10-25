@@ -11,7 +11,7 @@ ILDA_FUN_DECL ILDA_BASE_TYPE ILDA_SIMPLE_FUNCTION(ILDA_random)(ILDA_BASE_TYPE a,
 #ifdef ILDA_BASE_INT
 	return rand() % (b - a + 1) + a;
 #elif defined(ILDA_BASE_FLOAT)
-	return ((b - a) * ((float)rand() / RAND_MAX)) + a;
+	return ((b - a) * ((float)rand() / (float)RAND_MAX)) + a;
 #endif
 }
 

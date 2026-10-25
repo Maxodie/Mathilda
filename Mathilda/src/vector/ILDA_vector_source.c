@@ -36,17 +36,17 @@ ILDA_FUN_DECL ILDA_bool ILDA_FUNCTION(ILDA_vector4, copy)(ILDA_TYPE(ILDA_vector4
 	//Operators
 ILDA_FUN_DECL ILDA_bool ILDA_FUNCTION(ILDA_vector2, equal)(const ILDA_TYPE(ILDA_vector2)* base, const ILDA_TYPE(ILDA_vector2)* compare)
 {
-	return base->x == compare->x && base->y == base->y;
+	return base->x == compare->x && base->y == compare->y;
 }
 
 ILDA_FUN_DECL ILDA_bool ILDA_FUNCTION(ILDA_vector3, equal)(const ILDA_TYPE(ILDA_vector3)* base, const ILDA_TYPE(ILDA_vector3)* compare)
 {
-	return base->x == compare->x && base->y == base->y && base->z == compare->z;
+	return base->x == compare->x && base->y == compare->y && base->z == compare->z;
 }
 
 ILDA_FUN_DECL ILDA_bool ILDA_FUNCTION(ILDA_vector4, equal)(const ILDA_TYPE(ILDA_vector4)* base, const ILDA_TYPE(ILDA_vector4)* compare)
 {
-	return base->x == compare->x && base->y == base->y && base->z == compare->z && base->w == compare->w;
+	return base->x == compare->x && base->y == compare->y && base->z == compare->z && base->w == compare->w;
 }
 
 	//Addition
