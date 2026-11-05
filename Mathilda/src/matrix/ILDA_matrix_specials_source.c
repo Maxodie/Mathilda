@@ -93,6 +93,20 @@ ILDA_FUN_DECL ILDA_matrix4x4 ILDA_perspective_r(float fovy, float aspect, float 
     return result;
 }
 
+ILDA_FUN_DECL ILDA_matrix4x4 ILDA_ortho_r(float left, float right, float bottom, float top, float zNear, float zFar)
+{
+    ILDA_matrix4x4 ortho = ILDA_matrix4x4_identity;
+
+    ortho.data[0][0] = 2.f / (right - left);
+    ortho.data[1][1] = 2.f / (top - bottom);
+    ortho.data[2][2] = 2.f / (zFar - zNear);
+    ortho.data[3][0] = - (right + left) / (right - left);
+    ortho.data[3][1] = - (top + bottom) / (top - bottom);
+    ortho.data[3][2] = - (zFar - zNear) / (zFar - zNear);
+
+    return ortho;
+}
+
 ILDA_FUN_DECL ILDA_matrix4x4 ILDA_look_at_l(const ILDA_vector3f* position, const ILDA_vector3f* target, const ILDA_vector3f* worldUp)
 {
     ILDA_ASSERT(position, "ILDA_vector3f position in ILDA_matrix_look_at_r is nullptr")
@@ -140,6 +154,20 @@ ILDA_FUN_DECL ILDA_matrix4x4 ILDA_perspective_l(float fovy, float aspect, float 
     return result;
 }
 
+ILDA_FUN_DECL ILDA_matrix4x4 ILDA_ortho_l(float left, float right, float bottom, float top, float zNear, float zFar)
+{
+    ILDA_matrix4x4 ortho = ILDA_matrix4x4_identity;
+
+    ortho.data[0][0] = 2.f / (left - right);
+    ortho.data[1][1] = 2.f / (top - bottom);
+    ortho.data[2][2] = 2.f / (zFar - zNear);
+    ortho.data[3][0] = - (right + left) / (right - left);
+    ortho.data[3][1] = - (top + bottom) / (top - bottom);
+    ortho.data[3][2] = - (zFar - zNear) / (zFar - zNear);
+
+    return ortho;
+}
+
 ILDA_FUN_DECL ILDA_matrix4x4 ILDA_look_at(const ILDA_vector3f* position, const ILDA_vector3f* target, const ILDA_vector3f* worldUp)
 {
 #   ifdef ILDA_FORCE_LEFT_HANDED
@@ -157,6 +185,15 @@ ILDA_FUN_DECL ILDA_matrix4x4 ILDA_perspective(float fovy, float aspect, float zN
         return ILDA_perspective_r(fovy, aspect, zNear, zFar);
 #   endif
 
+}
+
+ILDA_FUN_DECL ILDA_matrix4x4 ILDA_ortho(float left, float right, float bottom, float top, float zNear, float zFar)
+{
+#   ifdef ILDA_FORCE_LEFT_HANDED
+        return ILDA_ortho_l(left, right, bottom, top, zNear, zFar);
+#   else
+        return ILDA_ortho_r(left, right, bottom, top, zNear, zFar);
+#   endif
 }
 
 ILDA_FUN_DECL ILDA_matrix4x4 ILDA_eulerAngleXYZ(float x, float y, float z)
