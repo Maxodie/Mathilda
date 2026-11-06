@@ -134,47 +134,56 @@ ILDA_FUN_DECL ILDA_bool ILDA_FUNCTION(ILDA_vector4, mul)(ILDA_TYPE(ILDA_vector4)
 
 
 //get Length
+#ifdef ILDA_BASE_DOUBLE
+ILDA_FUN_DECL double ILDA_FUNCTION(ILDA_vector2, length)(const ILDA_TYPE(ILDA_vector2)* v)
+{
+	return sqrt(v->x * v->x + v->y * v->y);
+}
+#else
 ILDA_FUN_DECL float ILDA_FUNCTION(ILDA_vector2, length)(const ILDA_TYPE(ILDA_vector2)* v)
 {
-#ifdef ILDA_BASE_DOUBLE
-	return sqrt(v->x * v->x + v->y * v->y);
-#else // ILDA_BASE_DOUBLE
 	return sqrtf((float)v->x * (float)v->x + (float)v->y * (float)v->y);
-#endif
 }
+#endif
 
+#ifdef ILDA_BASE_DOUBLE
+ILDA_FUN_DECL double ILDA_FUNCTION(ILDA_vector3, length)(const ILDA_TYPE(ILDA_vector3)* v)
+{
+	return sqrt(v->x * v->x + v->y * v->y + v->z * v->z);
+}
+#else
 ILDA_FUN_DECL float ILDA_FUNCTION(ILDA_vector3, length)(const ILDA_TYPE(ILDA_vector3)* v)
 {
-#ifdef ILDA_BASE_DOUBLE
-	return sqrt(v->x * v->x + v->y * v->y + v->z * v->z);
-#else // ILDA_BASE_DOUBLE
 	return sqrtf((float)v->x * (float)v->x + (float)v->y * (float)v->y + (float)v->z * (float)v->z);
-#endif
 }
+#endif
 
+#ifdef ILDA_BASE_DOUBLE
+ILDA_FUN_DECL double ILDA_FUNCTION(ILDA_vector4, length)(const ILDA_TYPE(ILDA_vector4)* v)
+{
+	return sqrt(v->x * v->x + v->y * v->y + v->z * v->z + v->w * v->w);
+}
+#else
 ILDA_FUN_DECL float ILDA_FUNCTION(ILDA_vector4, length)(const ILDA_TYPE(ILDA_vector4)* v)
 {
-#ifdef ILDA_BASE_DOUBLE
-	return sqrt(v->x * v->x + v->y * v->y + v->z * v->z + v->w * v->w);
-#else // ILDA_BASE_DOUBLE
 	return sqrtf((float)v->x * (float)v->x + (float)v->y * (float)v->y + (float)v->z * (float)v->z + (float)v->w * (float)v->w);
-#endif
 }
+#endif
 
 //specials
-ILDA_FUN_DECL ILDA_DEC_TYPE(ILDA_vector2) ILDA_FUNCTION(ILDA_vector2, normalize)(const ILDA_TYPE(ILDA_vector2)* vector2)
+ILDA_FUN_DECL ILDA_vector2f ILDA_FUNCTION(ILDA_vector2, normalize)(const ILDA_TYPE(ILDA_vector2)* vector2)
 {
 	float length = ILDA_FUNCTION(ILDA_vector2, length)(vector2);
 	return (ILDA_vector2f) { .x = vector2->x / length, .y = vector2->y / length };
 }
 
-ILDA_FUN_DECL ILDA_DEC_TYPE(ILDA_vector3) ILDA_FUNCTION(ILDA_vector3, normalize)(const ILDA_TYPE(ILDA_vector3)* vector3)
+ILDA_FUN_DECL ILDA_vector3f ILDA_FUNCTION(ILDA_vector3, normalize)(const ILDA_TYPE(ILDA_vector3)* vector3)
 {
 	float length = ILDA_FUNCTION(ILDA_vector3, length)(vector3);
 	return (ILDA_vector3f) { .x = vector3->x / length, .y = vector3->y / length, .z = vector3->z / length };
 }
 
-ILDA_FUN_DECL ILDA_DEC_TYPE(ILDA_vector4) ILDA_FUNCTION(ILDA_vector4, normalize)(const ILDA_TYPE(ILDA_vector4)* vector4)
+ILDA_FUN_DECL ILDA_vector4f ILDA_FUNCTION(ILDA_vector4, normalize)(const ILDA_TYPE(ILDA_vector4)* vector4)
 {
 	float length = ILDA_FUNCTION(ILDA_vector4, length)(vector4);
 	return (ILDA_vector4f) { .x = vector4->x / length, .y = vector4->y / length, .z = vector4->z / length, .w = vector4->w / length };
