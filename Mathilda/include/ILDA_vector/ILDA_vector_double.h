@@ -2,6 +2,7 @@
 #define __ILDA_VECTOR_DOUBLE__
 
 #include "ILDA_core.h"
+#include "ILDA_vector/ILDA_vector_float.h"
 
 typedef struct ILDA_vector2d {
 	double x;
