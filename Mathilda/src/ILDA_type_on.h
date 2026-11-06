@@ -23,22 +23,23 @@
 #ifdef ILDA_BASE_INT
 		#define ILDA_TYPE(dir) CONCAT_NO_SPACE(dir,INT_SUFFIX)
 		#define ILDA_BASE_TYPE int
-		#define ILDA_DEC_BASE_TYPE float 
+		#define ILDA_DEC_BASE_TYPE float
 		#define ILDA_DEC_TYPE(dir) CONCAT_NO_SPACE(dir,FLOAT_SUFFIX)
 
 #elif defined(ILDA_BASE_FLOAT)
 	#define ILDA_TYPE(dir) CONCAT_NO_SPACE(dir,FLOAT_SUFFIX)
 	#define ILDA_BASE_TYPE float
-	#define ILDA_DEC_BASE_TYPE float 
+	#define ILDA_DEC_BASE_TYPE float
 	#define ILDA_DEC_TYPE(dir) CONCAT_NO_SPACE(dir,FLOAT_SUFFIX)
 
 #else
 	#define ILDA_TYPE(dir) CONCAT_NO_SPACE(dir,DOUBLE_SUFFIX)
 	#define ILDA_BASE_TYPE double
-	#define ILDA_DEC_BASE_TYPE double 
+	#define ILDA_DEC_BASE_TYPE double
 	#define ILDA_DEC_TYPE(dir) CONCAT_NO_SPACE(dir,DOUBLE_SUFFIX)
 #endif // ILDA_BASE_INT
 
 
 #define ILDA_FUNCTION(dir, name) CONCAT2(ILDA_TYPE(dir),name)
+#define ILDA_DEC_FUNCTION(dir, name) ILDA_DEC_TYPE(ILDA_TYPE(dir),name)
 #define ILDA_SIMPLE_FUNCTION(dir) ILDA_TYPE(dir)
