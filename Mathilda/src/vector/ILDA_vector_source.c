@@ -189,9 +189,16 @@ ILDA_FUN_DECL ILDA_TYPE(ILDA_vector3) ILDA_FUNCTION(ILDA_vector3, cross)(const I
 ILDA_FUN_DECL ILDA_DEC_TYPE(ILDA_vector2) ILDA_FUNCTION(ILDA_vector2, lerp)(const ILDA_TYPE(ILDA_vector2)* a, const ILDA_TYPE(ILDA_vector2)* b, float t)
 {
     ILDA_DEC_TYPE(ILDA_vector2) result = { .x = (ILDA_DEC_BASE_TYPE)b->x, .y = (ILDA_DEC_BASE_TYPE)b->y };
+#ifdef ILDA_BASE_INT
+    ILDA_DEC_TYPE(ILDA_vector2) bFloat = { .x = (ILDA_DEC_BASE_TYPE)a->x, .y = (ILDA_DEC_BASE_TYPE)a->y };
+    ILDA_DEC_FUNCTION(ILDA_vector2, sub)(&result, bFloat);
+    ILDA_DEC_FUNCTION(ILDA_vector2, mul)(&result, t);
+    ILDA_DEC_FUNCTION(ILDA_vector2, add)(&result, bFloat);
+#else
     ILDA_DEC_FUNCTION(ILDA_vector2, sub)(&result, a);
     ILDA_DEC_FUNCTION(ILDA_vector2, mul)(&result, t);
     ILDA_DEC_FUNCTION(ILDA_vector2, add)(&result, a);
+#endif
 
     return result;
 }
@@ -199,9 +206,16 @@ ILDA_FUN_DECL ILDA_DEC_TYPE(ILDA_vector2) ILDA_FUNCTION(ILDA_vector2, lerp)(cons
 ILDA_FUN_DECL ILDA_DEC_TYPE(ILDA_vector3) ILDA_FUNCTION(ILDA_vector3, lerp)(const ILDA_TYPE(ILDA_vector3)* a, const ILDA_TYPE(ILDA_vector3)* b, float t)
 {
     ILDA_DEC_TYPE(ILDA_vector3) result = { .x = (ILDA_DEC_BASE_TYPE)b->x, .y = (ILDA_DEC_BASE_TYPE)b->y, .z = (ILDA_DEC_BASE_TYPE)b->z };
+#ifdef ILDA_BASE_INT
+    ILDA_DEC_TYPE(ILDA_vector3) bFloat = { .x = (ILDA_DEC_BASE_TYPE)a->x, .y = (ILDA_DEC_BASE_TYPE)a->y, .z = (ILDA_DEC_BASE_TYPE)a->z };
+    ILDA_DEC_FUNCTION(ILDA_vector3, sub)(&result, bFloat);
+    ILDA_DEC_FUNCTION(ILDA_vector3, mul)(&result, t);
+    ILDA_DEC_FUNCTION(ILDA_vector3, add)(&result, bFloat);
+#else
     ILDA_DEC_FUNCTION(ILDA_vector3, sub)(&result, a);
     ILDA_DEC_FUNCTION(ILDA_vector3, mul)(&result, t);
     ILDA_DEC_FUNCTION(ILDA_vector3, add)(&result, a);
+#endif
 
     return result;
 }
@@ -209,9 +223,16 @@ ILDA_FUN_DECL ILDA_DEC_TYPE(ILDA_vector3) ILDA_FUNCTION(ILDA_vector3, lerp)(cons
 ILDA_FUN_DECL ILDA_DEC_TYPE(ILDA_vector4) ILDA_FUNCTION(ILDA_vector4, lerp)(const ILDA_TYPE(ILDA_vector4)* a, const ILDA_TYPE(ILDA_vector4)* b, float t)
 {
     ILDA_DEC_TYPE(ILDA_vector4) result = { .x = (ILDA_DEC_BASE_TYPE)b->x, .y = (ILDA_DEC_BASE_TYPE)b->y, .z = (ILDA_DEC_BASE_TYPE)b->z, .w = (ILDA_DEC_BASE_TYPE)b->w };
+#ifdef ILDA_BASE_INT
+    ILDA_DEC_TYPE(ILDA_vector4) bFloat = { .x = (ILDA_DEC_BASE_TYPE)a->x, .y = (ILDA_DEC_BASE_TYPE)a->y, .z = (ILDA_DEC_BASE_TYPE)a->z, .w = (ILDA_DEC_BASE_TYPE)a->w };
+    ILDA_DEC_FUNCTION(ILDA_vector4, sub)(&result, bFloat);
+    ILDA_DEC_FUNCTION(ILDA_vector4, mul)(&result, t);
+    ILDA_DEC_FUNCTION(ILDA_vector4, add)(&result, bFloat);
+#else
     ILDA_DEC_FUNCTION(ILDA_vector4, sub)(&result, a);
     ILDA_DEC_FUNCTION(ILDA_vector4, mul)(&result, t);
     ILDA_DEC_FUNCTION(ILDA_vector4, add)(&result, a);
+#endif
 
     return result;
 }
