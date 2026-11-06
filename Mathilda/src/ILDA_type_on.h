@@ -41,5 +41,5 @@
 
 
 #define ILDA_FUNCTION(dir, name) CONCAT2(ILDA_TYPE(dir),name)
-#define ILDA_DEC_FUNCTION(dir, name) ILDA_DEC_TYPE(ILDA_TYPE(dir),name)
+#define ILDA_DEC_FUNCTION(dir, name) CONCAT2(ILDA_DEC_TYPE(dir),name)
 #define ILDA_SIMPLE_FUNCTION(dir) ILDA_TYPE(dir)
