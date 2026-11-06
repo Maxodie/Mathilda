@@ -185,6 +185,38 @@ ILDA_FUN_DECL ILDA_TYPE(ILDA_vector3) ILDA_FUNCTION(ILDA_vector3, cross)(const I
 	return (ILDA_TYPE(ILDA_vector3)) { .x = (a->y * b->z) - (a->z * b->y), .y = (a->z * b->x) - (a->x * b->z), .z = (a->x * b->y) - (a->y * b->x) };
 }
 
+//LERP
+ILDA_FUN_DECL ILDA_DEC_TYPE(ILDA_vector2) ILDA_FUNCTION(ILDA_vector2, lerp)(const ILDA_TYPE(ILDA_vector2)* a, const ILDA_TYPE(ILDA_vector2)* b, float t)
+{
+    ILDA_DEC_TYPE(ILDA_vector2) result = *b;
+    ILDA_FUNCTION(ILDA_vector2, sub)(&result, a);
+    ILDA_FUNCTION(ILDA_vector2, mul)(&result, t);
+    ILDA_FUNCTION(ILDA_vector2, add)(&result, a);
+
+    return result;
+}
+
+ILDA_FUN_DECL ILDA_DEC_TYPE(ILDA_vector3) ILDA_FUNCTION(ILDA_vector3, lerp)(const ILDA_TYPE(ILDA_vector3)* a, const ILDA_TYPE(ILDA_vector3)* b, float t)
+{
+    ILDA_DEC_TYPE(ILDA_vector3) result = *b;
+    ILDA_FUNCTION(ILDA_vector3, sub)(&result, a);
+    ILDA_FUNCTION(ILDA_vector3, mul)(&result, t);
+    ILDA_FUNCTION(ILDA_vector3, add)(&result, a);
+
+    return result;
+}
+
+ILDA_FUN_DECL ILDA_DEC_TYPE(ILDA_vector4) ILDA_FUNCTION(ILDA_vector4, lerp)(const ILDA_TYPE(ILDA_vector4)* a, const ILDA_TYPE(ILDA_vector4)* b, float t)
+{
+    ILDA_DEC_TYPE(ILDA_vector4) result = *b;
+    ILDA_FUNCTION(ILDA_vector4, sub)(&result, a);
+    ILDA_FUNCTION(ILDA_vector4, mul)(&result, t);
+    ILDA_FUNCTION(ILDA_vector4, add)(&result, a);
+
+    return result;
+}
+//LERP
+
 ILDA_FUN_DECL ILDA_BASE_TYPE ILDA_FUNCTION(ILDA_vector2, dot)(const ILDA_TYPE(ILDA_vector2)* a, const ILDA_TYPE(ILDA_vector2)* b)
 {
     return a->x * b->x + a->y * b->y;
